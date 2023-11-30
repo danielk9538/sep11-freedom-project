@@ -55,6 +55,8 @@ onKeyPress("space", () => {
 	}
 })
 ```
+The skills I used for my tool is How to read and how to learn by carefully reading the instructions and playtesting to see what line of code produces the type of action.
+
 I decided for my project I wanted to create a platformer game. I researched different tools and found that Kaboom would be helpful, This was the first two steps of design process (Define and Research)
 
 [Next](entry02.md)
