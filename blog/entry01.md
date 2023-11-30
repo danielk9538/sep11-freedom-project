@@ -17,7 +17,6 @@ const player = add([
 Using the character sprite above I used the `onkeyDown` and `player.move(-speed, 0)`  allowing for the arrow keys to direct the character at a select speed. The snippet Below is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks.
 
 ```javascript
-// onKeyDown() registers an event that runs every frame as long as user is holding a certain key
 onKeyDown("left", () => {
 	player.move(-SPEED, 0)
 })
@@ -51,9 +50,7 @@ add([
 
 ```javascript
 onKeyPress("space", () => {
-	// .isGrounded() is provided by body()
 	if (player.isGrounded()) {
-		// .jump() is provided by body()
 		player.jump()
 	}
 })
