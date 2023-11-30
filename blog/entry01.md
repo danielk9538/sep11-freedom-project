@@ -34,7 +34,16 @@ add([
 	pos(12, 12),
 ])
 ```
-The snippet above is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks. Added gravity to add a sense of left and right pov instead on birds eye view `setGravity(1600)` allowing me to later add some type of obstacle. I
+The snippet above is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks. Added gravity to add a sense of left and right pov instead on birds eye view `setGravity(1600)` allowing me to later add some type of obstacle. I added a jump feature using `player.jump` with a conditional 
+```javascript
+onKeyPress("space", () => {
+	// .isGrounded() is provided by body()
+	if (player.isGrounded()) {
+		// .jump() is provided by body()
+		player.jump()
+	}
+})
+```
 
 ```javascript
 
