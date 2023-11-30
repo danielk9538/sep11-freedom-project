@@ -5,7 +5,8 @@ I've decided to use the tool Kaboom to create a platformer game. I've completed 
 
 
 
-I have learned to create a character using an asset from kaboom called sprites which is just the character. The snippet below 
+I have learned to create a character using an asset from kaboom called sprites which is just the character. The snippet below imports an asset then I 
+
 ```javascript
 loadSprite("bean", "/sprites/bean.png")
 
