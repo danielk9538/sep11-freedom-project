@@ -1,7 +1,21 @@
 # Entry 1
 ##### 11/11/23
 
-I've decided to use the tool Kaboom to create a platformer game. I've completed the tutorial and tinkered with it in jsbin creating a semi platformer game. I have learned to create a character that can move side to side using `onkeyDown` and `player.move(-speed, 0)` these allow for the arrow keys to direct the character.
+I've decided to use the tool Kaboom to create a platformer game. I've completed the tutorial and tinkered with it in jsbin creating a semi platformer game.
+
+
+
+I have learned to create a character using an asset from kaboom called sprites which is just the character. The snippet below 
+```javascript
+loadSprite("bean", "/sprites/bean.png")
+
+const player = add([
+	sprite("bean"),
+	pos(center()),
+])
+```
+
+that can move side to side using `onkeyDown` and `player.move(-speed, 0)` these allow for the arrow keys to direct the character.
 
 ```javascript
 // onKeyDown() registers an event that runs every frame as long as user is holding a certain key
@@ -34,7 +48,8 @@ add([
 	pos(12, 12),
 ])
 ```
-The snippet above is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks. Added gravity to add a sense of left and right pov instead on birds eye view `setGravity(1600)` allowing me to later add some type of obstacle. I added a jump feature using `player.jump` with a conditional 
+The snippet above is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks. Added gravity to add a sense of left and right pov instead on birds eye view `setGravity(1600)` allowing me to later add some type of obstacle. I added a jump feature using `player.jump` with a conditional allowing the character to jump only if the character has landed `player.isGrounded` without this, the character would jump like flappy bird.
+
 ```javascript
 onKeyPress("space", () => {
 	// .isGrounded() is provided by body()
@@ -43,23 +58,6 @@ onKeyPress("space", () => {
 		player.jump()
 	}
 })
-```
-
-```javascript
-
-// Load assets
-loadSprite("bean", "/sprites/bean.png")
-
-// Define player movement speed (pixels per second)
-const SPEED = 320
-
-// Add player game object
-const player = add([
-	sprite("bean"),
-	// center() returns the center point vec2(width() / 2, height() / 2)
-	pos(center()),
-])
-
 ```
 
 [Next](entry02.md)
