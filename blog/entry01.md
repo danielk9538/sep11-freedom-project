@@ -1,7 +1,7 @@
 # Entry 1
 ##### 11/11/23
 
-I've decided to  use the tool Kaboom to create a platformer game. I've completed the tutorial and tinkered with it in jsbin. I have learned  to create a character that can move side to side using `onkeyDown` and `player.move(-speed, 0)` these allow
+I've decided to  use the tool Kaboom to create a platformer game. I've completed the tutorial and tinkered with it in jsbin. I have learned  to create a character that can move side to side using `onkeyDown` and `player.move(-speed, 0)` these allow for the arrow keys to direct the character.
 
 ```javascript
 // onKeyDown() registers an event that runs every frame as long as user is holding a certain key
@@ -34,12 +34,9 @@ add([
 	pos(12, 12),
 ])
 ```
+The snippet above is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks.
 
 ```javascript
-// Input handling and basic player movement
-
-// Start kaboom
-kaboom()
 
 // Load assets
 loadSprite("bean", "/sprites/bean.png")
