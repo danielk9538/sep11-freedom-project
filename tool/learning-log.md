@@ -1,19 +1,19 @@
 # Tool Learning Log
 
-Tool: **X**
+Tool: **Kaboom**
 
-Project: **X**
+Project: **Platformer Game**
 
 ---
 
-X/X/X:
+10/29/23:
 * Text
 
-X/X/X:
+11/05/23:
 * Text
 
 
-<!-- 
+<!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
 * Challenges, a-ha moments, etc
