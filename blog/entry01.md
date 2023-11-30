@@ -5,7 +5,7 @@ I've decided to use the tool Kaboom to create a platformer game. I've completed 
 
 
 
-I have learned to create a character using an asset from kaboom called sprites which is just the character. The snippet below imports an asset then I 
+I have learned to create a character using an asset from kaboom called sprites which is just the character. The snippet below imports an asset then I placed it in the center of the screen to portray a character.
 
 ```javascript
 loadSprite("bean", "/sprites/bean.png")
@@ -16,7 +16,7 @@ const player = add([
 ])
 ```
 
-that can move side to side using `onkeyDown` and `player.move(-speed, 0)` these allow for the arrow keys to direct the character.
+Using the character sprite above I used the `onkeyDown` and `player.move(-speed, 0)`  allowing for the arrow keys to direct the character at a select speed. The snippet below shows the use of `onkeyDown` and `player.move(-speed, 0)`.
 
 ```javascript
 // onKeyDown() registers an event that runs every frame as long as user is holding a certain key
@@ -36,20 +36,20 @@ onKeyDown("up", () => {
 onKeyDown("down", () => {
 	player.move(0, SPEED)
 })
+```
+The snippet Below is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks. Added gravity to add a sense of left and right pov instead on birds eye view `setGravity(1600)` allowing me to later add some type of obstacle. I added a jump feature using `player.jump` with a conditional allowing the character to jump only if the character has landed `player.isGrounded` without this, the character would jump like flappy bird.
 
-// onClick() registers an event that runs once when left mouse is clicked
+```javascript
 onClick(() => {
-	// .moveTo() is provided by pos() component, changes the position
 	player.moveTo(mousePos())
 })
 
 add([
-	// text() component is similar to sprite() but renders text
 	text("Press arrow keys", { width: width() / 2 }),
 	pos(12, 12),
 ])
 ```
-The snippet above is the code used for directing each key to move a certain direction, the `onclick` allows for moving the character onto where the cursor clicks. Added gravity to add a sense of left and right pov instead on birds eye view `setGravity(1600)` allowing me to later add some type of obstacle. I added a jump feature using `player.jump` with a conditional allowing the character to jump only if the character has landed `player.isGrounded` without this, the character would jump like flappy bird.
+
 
 ```javascript
 onKeyPress("space", () => {
