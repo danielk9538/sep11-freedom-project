@@ -55,7 +55,7 @@ onKeyPress("space", () => {
 	}
 })
 ```
-
+I decided for my project I wanted to create a platformer game. I researched different tools and found that Kaboom would be helpful, This was the first two steps of design process (Define and Research)
 
 [Next](entry02.md)
 
