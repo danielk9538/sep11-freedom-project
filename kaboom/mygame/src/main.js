@@ -68,3 +68,5 @@ k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
 ])
+
+// npm run dev
