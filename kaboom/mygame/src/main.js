@@ -14,7 +14,7 @@ k.add([
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-k.setgravity(1600)
+// k.setgravity(1600)
 
 const SPEED = 320
 
@@ -70,7 +70,7 @@ onKeyDown("down", () => {
 })
 //end
 
-add([
+k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
 ])
