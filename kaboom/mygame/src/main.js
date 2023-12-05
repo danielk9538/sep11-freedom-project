@@ -12,7 +12,7 @@ const player2 = add([
 k.onClick(() => k.addKaboom(k.mousePos()))
 
 onKeyDown("w", () => {
-	player2.move(-SPEED, 0)
+	player2.move(0, -SPEED)
 })
 
 onKeyDown("a", () => {
@@ -20,7 +20,7 @@ onKeyDown("a", () => {
 })
 
 onKeyDown("s", () => {
-	player2.move(SPEED, 0)
+	player2.move(0, SPEED)
 })
 
 onKeyDown("d", () => {
