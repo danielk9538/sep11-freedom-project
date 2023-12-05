@@ -14,7 +14,7 @@ k.add([
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-k.setgravity(100)
+// k.setgravity(1600)
 
 const SPEED = 320
 
@@ -32,6 +32,13 @@ onKeyDown("a", () => {
 onKeyDown("d", () => {
 	player1.move(SPEED, 0)
 })
+onKeyPress("w", () => {
+	// .isGrounded() is provided by body()
+	if (player1.isGrounded()) {
+		// .jump() is provided by body()
+		player1.jump()
+	}
+})
 //end
 
 //player2 code
@@ -47,6 +54,13 @@ onKeyDown("left", () => {
 })
 onKeyDown("right", () => {
 	player2.move(SPEED, 0)
+})
+onKeyPress("up", () => {
+	// .isGrounded() is provided by body()
+	if (player2.isGrounded()) {
+		// .jump() is provided by body()
+		player2.jump()
+	}
 })
 //end
 
