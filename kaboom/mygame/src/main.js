@@ -4,6 +4,8 @@ const k = kaboom()
 
 k.loadSprite("bean", "sprites/bean.png")
 
+setgravity(1600)
+
 const player2 = add([
 	k.pos(120, 80),
 	k.sprite("bean"),
@@ -20,7 +22,7 @@ onKeyDown("a", () => {
 })
 
 onKeyDown("s", () => {
-	player2.move(0, SPEED)
+	player2.move(0, SPEED, 0)
 })
 
 onKeyDown("d", () => {
