@@ -11,6 +11,22 @@ k.add([
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
+onKeyDown("w", () => {
+	player2.move(SPEED, 0)
+})
+
+onKeyDown("a", () => {
+	player2.move(SPEED, 0)
+})
+
+onKeyDown("s", () => {
+	player2.move(SPEED, 0)
+})
+
+onKeyDown("d", () => {
+	player2.move(SPEED, 0)
+})
+
 const SPEED = 320
 
 const player = add([
@@ -21,30 +37,21 @@ const player = add([
 onKeyDown("left", () => {
 	player.move(-SPEED, 0)
 })
-onKeyDown("a", () => {
-	player2.move(SPEED, 0)
-})
 
 onKeyDown("right", () => {
 	player.move(SPEED, 0)
 })
-onKeyDown("d", () => {
-	player2.move(SPEED, 0)
-})
+
 
 onKeyDown("up", () => {
 	player.move(0, -SPEED)
 })
-onKeyDown("w", () => {
-	player2.move(SPEED, 0)
-})
+
 
 onKeyDown("down", () => {
 	player.move(0, SPEED)
 })
-onKeyDown("s", () => {
-	player2.move(SPEED, 0)
-})
+
 
 add([
 	text("Press arrow keys & WSAD", { width: width() / 2 }),
