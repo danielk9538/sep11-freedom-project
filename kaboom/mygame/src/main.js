@@ -54,6 +54,6 @@ onKeyDown("down", () => {
 
 
 add([
-	text("Press arrow keys & WSAD", { width: width() / 2 }),
+	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
 ])
