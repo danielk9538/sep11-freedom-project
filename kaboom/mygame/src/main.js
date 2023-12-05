@@ -14,7 +14,7 @@ k.add([
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-// k.setgravity(1600)
+k.setgravity(100)
 
 const SPEED = 320
 
@@ -26,18 +26,9 @@ const player1 = add([
 	k.body(),
 ])
 
-onKeyDown("w", () => {
-	player1.move(0, -SPEED)
-})
-
 onKeyDown("a", () => {
 	player1.move(-SPEED, 0)
 })
-
-onKeyDown("s", () => {
-	player1.move(0, SPEED, 0)
-})
-
 onKeyDown("d", () => {
 	player1.move(SPEED, 0)
 })
@@ -54,19 +45,8 @@ const player2 = add([
 onKeyDown("left", () => {
 	player2.move(-SPEED, 0)
 })
-
 onKeyDown("right", () => {
 	player2.move(SPEED, 0)
-})
-
-
-onKeyDown("up", () => {
-	player2.move(0, -SPEED)
-})
-
-
-onKeyDown("down", () => {
-	player2.move(0, SPEED)
 })
 //end
 
