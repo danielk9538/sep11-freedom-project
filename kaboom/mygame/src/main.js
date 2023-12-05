@@ -14,7 +14,7 @@ k.add([
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-// k.setgravity(1600)
+setGravity(1600)
 
 const SPEED = 320
 
