@@ -14,16 +14,16 @@ k.add([
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-const SPEED = 320
 k.setgravity(1600)
+
+const SPEED = 320
 
 //player1 code
 const player1 = add([
 	k.pos(120, 80),
 	k.sprite("bean"),
-	area(),
-	body(),
-
+	k.area(),
+	k.body(),
 ])
 
 onKeyDown("w", () => {
