@@ -4,56 +4,72 @@ const k = kaboom()
 
 k.loadSprite("bean", "sprites/bean.png")
 
-setgravity(1600)
-
-const player2 = add([
-	k.pos(120, 80),
-	k.sprite("bean"),
+k.add([
+	rect(width(), 48),
+	outline(4),
+	area(),
+	pos(0, height() - 48),
+	body({ isStatic: true }),
 ])
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
+const SPEED = 320
+
+setgravity(1600)
+
+//player1 code
+const player1 = add([
+	k.pos(120, 80),
+	k.sprite("bean"),
+	area(),
+	body(),
+
+])
+
 onKeyDown("w", () => {
-	player2.move(0, -SPEED)
+	player1.move(0, -SPEED)
 })
 
 onKeyDown("a", () => {
-	player2.move(-SPEED, 0)
+	player1.move(-SPEED, 0)
 })
 
 onKeyDown("s", () => {
-	player2.move(0, SPEED, 0)
+	player1.move(0, SPEED, 0)
 })
 
 onKeyDown("d", () => {
-	player2.move(SPEED, 0)
+	player1.move(SPEED, 0)
 })
+//end
 
-const SPEED = 320
-
-const player = add([
+//player2 code
+const player2 = add([
 	sprite("bean"),
 	pos(center()),
+	area(),
+	body(),
 ])
 
 onKeyDown("left", () => {
-	player.move(-SPEED, 0)
+	player2.move(-SPEED, 0)
 })
 
 onKeyDown("right", () => {
-	player.move(SPEED, 0)
+	player2.move(SPEED, 0)
 })
 
 
 onKeyDown("up", () => {
-	player.move(0, -SPEED)
+	player2.move(0, -SPEED)
 })
 
 
 onKeyDown("down", () => {
-	player.move(0, SPEED)
+	player2.move(0, SPEED)
 })
-
+//end
 
 add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
