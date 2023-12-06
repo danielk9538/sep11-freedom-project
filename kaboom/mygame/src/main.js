@@ -19,6 +19,8 @@ k.loadSound("blip", "/examples/sounds/blip.mp3")
 k.loadSound("hit", "/examples/sounds/hit.mp3")
 k.loadSound("portal", "/examples/sounds/portal.mp3")
 
+background: [141, 183, 255]
+
 k.add([
 	rect(width(), 100),
 	outline(4),
@@ -83,11 +85,6 @@ k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
 ])
-
-kaboom({
-	background: [141, 183, 255],
-})
-
 // // custom component controlling enemy patrol movement
 // function patrol(speed = 60, dir = 1) {
 // 	return {
