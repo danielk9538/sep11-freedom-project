@@ -420,8 +420,8 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 })
 
-scene("lose", () => {
-	add([
+k.scene("lose", () => {
+	k.add([
 		text("You Lose"),
 	])
 	onKeyPress(() => go("game"))
