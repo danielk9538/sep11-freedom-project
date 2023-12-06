@@ -74,10 +74,10 @@ kaboom({
 })
 
 // load assets
-loadSprite("bean", "/sprites/bean.png")
-loadSprite("bag", "/sprites/bag.png")
-loadSprite("ghosty", "/sprites/ghosty.png")
-loadSprite("spike", "/sprites/spike.png")
+k.loadSprite("bean", "/sprites/bean.png")
+k.loadSprite("bag", "/sprites/bag.png")
+k.loadSprite("ghosty", "/sprites/ghosty.png")
+k.loadSprite("spike", "/sprites/spike.png")
 loadSprite("grass", "/sprites/grass.png")
 loadSprite("steel", "/sprites/steel.png")
 loadSprite("prize", "/sprites/jumpy.png")
