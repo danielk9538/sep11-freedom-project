@@ -5,7 +5,7 @@ const k = kaboom()
 k.loadSprite("bean", "sprites/bean.png")
 
 k.add([
-	rect(width(), 48),
+	rect(width(), 100),
 	outline(4),
 	area(),
 	pos(0, height() - 48),
