@@ -3,6 +3,21 @@ import kaboom from "kaboom"
 const k = kaboom()
 
 k.loadSprite("bean", "sprites/bean.png")
+loadSprite("bean", "/sprites/bean.png")
+loadSprite("bag", "/sprites/bag.png")
+loadSprite("ghosty", "/sprites/ghosty.png")
+loadSprite("spike", "/sprites/spike.png")
+loadSprite("grass", "/sprites/grass.png")
+loadSprite("steel", "/sprites/steel.png")
+loadSprite("prize", "/sprites/jumpy.png")
+loadSprite("apple", "/sprites/apple.png")
+loadSprite("portal", "/sprites/portal.png")
+loadSprite("coin", "/sprites/coin.png")
+loadSound("coin", "/examples/sounds/score.mp3")
+loadSound("powerup", "/examples/sounds/powerup.mp3")
+loadSound("blip", "/examples/sounds/blip.mp3")
+loadSound("hit", "/examples/sounds/hit.mp3")
+loadSound("portal", "/examples/sounds/portal.mp3")
 
 k.add([
 	rect(width(), 100),
