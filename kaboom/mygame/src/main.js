@@ -1,94 +1,78 @@
 import kaboom from "kaboom"
 
-// const k = kaboom()
+const k = kaboom()
 
-// k.loadSprite("bean", "sprites/bean.png")
+k.loadSprite("bean", "sprites/bean.png")
 
-// k.add([
-// 	rect(width(), 100),
-// 	outline(4),
-// 	area(),
-// 	pos(0, height() - 48),
-// 	body({ isStatic: true }),
-// ])
+k.add([
+	rect(width(), 100),
+	outline(4),
+	area(),
+	pos(0, height() - 48),
+	body({ isStatic: true }),
+])
 
-// k.onClick(() => k.addKaboom(k.mousePos()))
+k.onClick(() => k.addKaboom(k.mousePos()))
 
-// setGravity(1600)
+setGravity(1600)
 
-// const SPEED = 320
+const SPEED = 320
 
-// //player1 code
-// const player1 = add([
-// 	k.pos(120, 80),
-// 	k.sprite("bean"),
-// 	k.area(),
-// 	k.body(),
-// ])
+//player1 code
+const player1 = add([
+	k.pos(120, 80),
+	k.sprite("bean"),
+	k.area(),
+	k.body(),
+])
 
-// onKeyDown("a", () => {
-// 	player1.move(-SPEED, 0)
-// })
-// onKeyDown("d", () => {
-// 	player1.move(SPEED, 0)
-// })
-// onKeyPress("w", () => {
-// 	// .isGrounded() is provided by body()
-// 	if (player1.isGrounded()) {
-// 		// .jump() is provided by body()
-// 		player1.jump()
-// 	}
-// })
-// //end
+onKeyDown("a", () => {
+	player1.move(-SPEED, 0)
+})
+onKeyDown("d", () => {
+	player1.move(SPEED, 0)
+})
+onKeyPress("w", () => {
+	// .isGrounded() is provided by body()
+	if (player1.isGrounded()) {
+		// .jump() is provided by body()
+		player1.jump()
+	}
+})
+//end
 
-// //player2 code
-// const player2 = add([
-// 	sprite("bean"),
-// 	pos(center()),
-// 	area(),
-// 	body(),
-// ])
+//player2 code
+const player2 = add([
+	sprite("bean"),
+	pos(center()),
+	area(),
+	body(),
+])
 
-// onKeyDown("left", () => {
-// 	player2.move(-SPEED, 0)
-// })
-// onKeyDown("right", () => {
-// 	player2.move(SPEED, 0)
-// })
-// onKeyPress("up", () => {
-// 	// .isGrounded() is provided by body()
-// 	if (player2.isGrounded()) {
-// 		// .jump() is provided by body()
-// 		player2.jump()
-// 	}
-// })
-// //end
+onKeyDown("left", () => {
+	player2.move(-SPEED, 0)
+})
+onKeyDown("right", () => {
+	player2.move(SPEED, 0)
+})
+onKeyPress("up", () => {
+	// .isGrounded() is provided by body()
+	if (player2.isGrounded()) {
+		// .jump() is provided by body()
+		player2.jump()
+	}
+})
+//end
 
-// k.add([
-// 	text("Press arrow keys & WASD", { width: width() / 2 }),
-// 	pos(12, 12),
-// ])
+k.add([
+	text("Press arrow keys & WASD", { width: width() / 2 }),
+	pos(12, 12),
+])
 
 kaboom({
 	background: [141, 183, 255],
 })
 
-// load assets
-k.loadSprite("bean", "/sprites/bean.png")
-k.loadSprite("bag", "/sprites/bag.png")
-k.loadSprite("ghosty", "/sprites/ghosty.png")
-k.loadSprite("spike", "/sprites/spike.png")
-loadSprite("grass", "/sprites/grass.png")
-loadSprite("steel", "/sprites/steel.png")
-loadSprite("prize", "/sprites/jumpy.png")
-loadSprite("apple", "/sprites/apple.png")
-loadSprite("portal", "/sprites/portal.png")
-loadSprite("coin", "/sprites/coin.png")
-loadSound("coin", "/examples/sounds/score.mp3")
-loadSound("powerup", "/examples/sounds/powerup.mp3")
-loadSound("blip", "/examples/sounds/blip.mp3")
-loadSound("hit", "/examples/sounds/hit.mp3")
-loadSound("portal", "/examples/sounds/portal.mp3")
 
 setGravity(3200)
 
