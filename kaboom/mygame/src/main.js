@@ -74,21 +74,21 @@ kaboom({
 })
 
 // load assets
-k.loadSprite("bean", "/sprites/bean.png")
-k.loadSprite("bag", "/sprites/bag.png")
-k.loadSprite("ghosty", "/sprites/ghosty.png")
-k.loadSprite("spike", "/sprites/spike.png")
-k.loadSprite("grass", "/sprites/grass.png")
-k.loadSprite("steel", "/sprites/steel.png")
-k.loadSprite("prize", "/sprites/jumpy.png")
-k.loadSprite("apple", "/sprites/apple.png")
-k.loadSprite("portal", "/sprites/portal.png")
-k.loadSprite("coin", "/sprites/coin.png")
-k.loadSound("coin", "/examples/sounds/score.mp3")
-k.loadSound("powerup", "/examples/sounds/powerup.mp3")
-k.loadSound("blip", "/examples/sounds/blip.mp3")
-k.loadSound("hit", "/examples/sounds/hit.mp3")
-k.loadSound("portal", "/examples/sounds/portal.mp3")
+loadSprite("bean", "/sprites/bean.png")
+loadSprite("bag", "/sprites/bag.png")
+loadSprite("ghosty", "/sprites/ghosty.png")
+loadSprite("spike", "/sprites/spike.png")
+loadSprite("grass", "/sprites/grass.png")
+loadSprite("steel", "/sprites/steel.png")
+loadSprite("prize", "/sprites/jumpy.png")
+loadSprite("apple", "/sprites/apple.png")
+loadSprite("portal", "/sprites/portal.png")
+loadSprite("coin", "/sprites/coin.png")
+loadSound("coin", "/examples/sounds/score.mp3")
+loadSound("powerup", "/examples/sounds/powerup.mp3")
+loadSound("blip", "/examples/sounds/blip.mp3")
+loadSound("hit", "/examples/sounds/hit.mp3")
+loadSound("portal", "/examples/sounds/portal.mp3")
 
 setGravity(3200)
 
@@ -267,7 +267,7 @@ const levelConf = {
 	},
 }
 
-k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 	// add level to scene
 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
@@ -424,21 +424,21 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 })
 
-k.scene("lose", () => {
+scene("lose", () => {
 	add([
 		text("You Lose"),
 	])
 	onKeyPress(() => go("game"))
 })
 
-k.scene("win", () => {
+scene("win", () => {
 	add([
 		text("You Win"),
 	])
 	onKeyPress(() => go("game"))
 })
 
-k.go("game")
+go("game")
 
 
 // npm run dev
