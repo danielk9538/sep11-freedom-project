@@ -1,6 +1,7 @@
 import kaboom from "kaboom"
 
-const k = kaboom()
+// const k =
+kaboom()
 
 k.loadSprite("bean", "sprites/bean.png")
 k.loadSprite("bean", "/sprites/bean.png")
@@ -245,7 +246,7 @@ const levelConf = {
 			area(),
 			anchor("bot"),
 			body(),
-			patrol(),
+			// patrol(),
 			offscreen({ hide: true }),
 			"enemy",
 		],
@@ -274,7 +275,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		// makes it fall to gravity and jumpable
 		body(),
 		// the custom component we defined above
-		big(),
+		// big(),
 		anchor("bot"),
 	])
 
@@ -435,3 +436,4 @@ go("game")
 
 
 // npm run dev
+kaboom()
