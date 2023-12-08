@@ -398,5 +398,3 @@ go("game")
 
 
 // npm run dev
-kaboom()
-Build levels with addLevel()
