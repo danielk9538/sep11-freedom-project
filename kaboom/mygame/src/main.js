@@ -190,7 +190,7 @@ const levelConf = {
 		"^": () => [
 			sprite("spike"),
 			area(),
-			scale
+			width(5),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
