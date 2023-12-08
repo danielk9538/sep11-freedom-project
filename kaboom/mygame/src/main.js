@@ -1,523 +1,439 @@
 import kaboom from "kaboom"
 
-// const k = kaboom()
+const k = kaboom()
 
-// k.loadSprite("bean", "sprites/bean.png")
-// k.loadSprite("bean", "/sprites/bean.png")
-// k.loadSprite("bag", "/sprites/bag.png")
-// k.loadSprite("ghosty", "/sprites/ghosty.png")
-// k.loadSprite("spike", "/sprites/spike.png")
-// k.loadSprite("grass", "/sprites/grass.png")
-// k.loadSprite("steel", "/sprites/steel.png")
-// k.loadSprite("prize", "/sprites/jumpy.png")
-// k.loadSprite("apple", "/sprites/apple.png")
-// k.loadSprite("portal", "/sprites/portal.png")
-// k.loadSprite("coin", "/sprites/coin.png")
-// k.loadSound("coin", "/examples/sounds/score.mp3")
-// k.loadSound("powerup", "/examples/sounds/powerup.mp3")
-// k.loadSound("blip", "/examples/sounds/blip.mp3")
-// k.loadSound("hit", "/examples/sounds/hit.mp3")
-// k.loadSound("portal", "/examples/sounds/portal.mp3")
+k.loadSprite("bean", "sprites/bean.png")
+k.loadSprite("bean", "/sprites/bean.png")
+k.loadSprite("bag", "/sprites/bag.png")
+k.loadSprite("ghosty", "/sprites/ghosty.png")
+k.loadSprite("spike", "/sprites/spike.png")
+k.loadSprite("grass", "/sprites/grass.png")
+k.loadSprite("steel", "/sprites/steel.png")
+k.loadSprite("prize", "/sprites/jumpy.png")
+k.loadSprite("apple", "/sprites/apple.png")
+k.loadSprite("portal", "/sprites/portal.png")
+k.loadSprite("coin", "/sprites/coin.png")
+k.loadSound("coin", "/examples/sounds/score.mp3")
+k.loadSound("powerup", "/examples/sounds/powerup.mp3")
+k.loadSound("blip", "/examples/sounds/blip.mp3")
+k.loadSound("hit", "/examples/sounds/hit.mp3")
+k.loadSound("portal", "/examples/sounds/portal.mp3")
 
-// background: [141, 183, 255]
+background: [141, 183, 255]
 
-// k.add([
-// 	rect(width(), 100),
-// 	outline(4),
-// 	area(),
-// 	pos(0, height() - 48),
-// 	body({ isStatic: true }),
-// ])
+k.add([
+	rect(width(), 100),
+	outline(4),
+	area(),
+	pos(0, height() - 48),
+	body({ isStatic: true }),
+])
 
-// k.onClick(() => k.addKaboom(k.mousePos()))
+k.onClick(() => k.addKaboom(k.mousePos()))
 
-// setGravity(1600)
+setGravity(1600)
 
-// const SPEED = 320
+const SPEED = 320
 
-// //player1 code
-// const player1 = add([
-// 	k.pos(120, 80),
-// 	k.sprite("bean"),
-// 	k.area(),
-// 	k.body(),
-// ])
+//player1 code
+const player1 = add([
+	k.pos(120, 80),
+	k.sprite("bean"),
+	k.area(),
+	k.body(),
+])
 
-// onKeyDown("a", () => {
-// 	player1.move(-SPEED, 0)
-// })
-// onKeyDown("d", () => {
-// 	player1.move(SPEED, 0)
-// })
-// onKeyPress("w", () => {
-// 	// .isGrounded() is provided by body()
-// 	if (player1.isGrounded()) {
-// 		// .jump() is provided by body()
-// 		player1.jump()
+onKeyDown("a", () => {
+	player1.move(-SPEED, 0)
+})
+onKeyDown("d", () => {
+	player1.move(SPEED, 0)
+})
+onKeyPress("w", () => {
+	// .isGrounded() is provided by body()
+	if (player1.isGrounded()) {
+		// .jump() is provided by body()
+		player1.jump()
+	}
+})
+//end
+
+//player2 code
+const player2 = add([
+	sprite("bean"),
+	pos(center()),
+	area(),
+	body(),
+])
+
+onKeyDown("left", () => {
+	player2.move(-SPEED, 0)
+})
+onKeyDown("right", () => {
+	player2.move(SPEED, 0)
+})
+onKeyPress("up", () => {
+	// .isGrounded() is provided by body()
+	if (player2.isGrounded()) {
+		// .jump() is provided by body()
+		player2.jump()
+	}
+})
+//end
+
+k.add([
+	text("Press arrow keys & WASD", { width: width() / 2 }),
+	pos(12, 12),
+])
+// // custom component controlling enemy patrol movement
+// function patrol(speed = 60, dir = 1) {
+// 	return {
+// 		id: "patrol",
+// 		require: [ "pos", "area" ],
+// 		add() {
+// 			this.on("collide", (obj, col) => {
+// 				if (col.isLeft() || col.isRight()) {
+// 					dir = -dir
+// 				}
+// 			})
+// 		},
+// 		update() {
+// 			this.move(speed * dir, 0)
+// 		},
 // 	}
-// })
-// //end
-
-// //player2 code
-// const player2 = add([
-// 	sprite("bean"),
-// 	pos(center()),
-// 	area(),
-// 	body(),
-// ])
-
-// onKeyDown("left", () => {
-// 	player2.move(-SPEED, 0)
-// })
-// onKeyDown("right", () => {
-// 	player2.move(SPEED, 0)
-// })
-// onKeyPress("up", () => {
-// 	// .isGrounded() is provided by body()
-// 	if (player2.isGrounded()) {
-// 		// .jump() is provided by body()
-// 		player2.jump()
-// 	}
-// })
-// //end
-
-// k.add([
-// 	text("Press arrow keys & WASD", { width: width() / 2 }),
-// 	pos(12, 12),
-// ])
-// // // custom component controlling enemy patrol movement
-// // function patrol(speed = 60, dir = 1) {
-// // 	return {
-// // 		id: "patrol",
-// // 		require: [ "pos", "area" ],
-// // 		add() {
-// // 			this.on("collide", (obj, col) => {
-// // 				if (col.isLeft() || col.isRight()) {
-// // 					dir = -dir
-// // 				}
-// // 			})
-// // 		},
-// // 		update() {
-// // 			this.move(speed * dir, 0)
-// // 		},
-// // 	}
-// // }
-
-// // // custom component that makes stuff grow big
-// // function big() {
-// // 	let timer = 0
-// // 	let isBig = false
-// // 	let destScale = 1
-// // 	return {
-// // 		// component id / name
-// // 		id: "big",
-// // 		// it requires the scale component
-// // 		require: [ "scale" ],
-// // 		// this runs every frame
-// // 		update() {
-// // 			if (isBig) {
-// // 				timer -= dt()
-// // 				if (timer <= 0) {
-// // 					this.smallify()
-// // 				}
-// // 			}
-// // 			this.scale = this.scale.lerp(vec2(destScale), dt() * 6)
-// // 		},
-// // 		// custom methods
-// // 		isBig() {
-// // 			return isBig
-// // 		},
-// // 		smallify() {
-// // 			destScale = 1
-// // 			timer = 0
-// // 			isBig = false
-// // 		},
-// // 		biggify(time) {
-// // 			destScale = 2
-// // 			timer = time
-// // 			isBig = true
-// // 		},
-// // 	}
-// // }
-
-// // define some constants
-// const JUMP_FORCE = 1320
-// const MOVE_SPEED = 480
-// const FALL_DEATH = 2400
-
-// const LEVELS = [
-// 	[
-// 		"    0       ",
-// 		"   --       ",
-// 		"       $$   ",
-// 		" %    ===   ",
-// 		"            ",
-// 		"   ^^  > = @",
-// 		"============",
-// 	],
-// 	[
-// 		"                          $",
-// 		"                          $",
-// 		"                          $",
-// 		"                          $",
-// 		"                          $",
-// 		"           $$         =   $",
-// 		"  %      ====         =   $",
-// 		"                      =   $",
-// 		"                      =    ",
-// 		"       ^^      = >    =   @",
-// 		"===========================",
-// 	],
-// 	[
-// 		"     $    $    $    $     $",
-// 		"     $    $    $    $     $",
-// 		"                           ",
-// 		"                           ",
-// 		"                           ",
-// 		"                           ",
-// 		"                           ",
-// 		" ^^^^>^^^^>^^^^>^^^^>^^^^^@",
-// 		"===========================",
-// 	],
-// ]
-
-// // define what each symbol means in the level graph
-// const levelConf = {
-// 	tileWidth: 64,
-// 	tileHeight: 64,
-// 	tiles: {
-// 		"=": () => [
-// 			sprite("grass"),
-// 			area(),
-// 			body({ isStatic: true }),
-// 			anchor("bot"),
-// 			offscreen({ hide: true }),
-// 			"platform",
-// 		],
-// 		"-": () => [
-// 			sprite("steel"),
-// 			area(),
-// 			body({ isStatic: true }),
-// 			offscreen({ hide: true }),
-// 			anchor("bot"),
-// 		],
-// 		"0": () => [
-// 			sprite("bag"),
-// 			area(),
-// 			body({ isStatic: true }),
-// 			offscreen({ hide: true }),
-// 			anchor("bot"),
-// 		],
-// 		"$": () => [
-// 			sprite("coin"),
-// 			area(),
-// 			pos(0, -9),
-// 			anchor("bot"),
-// 			offscreen({ hide: true }),
-// 			"coin",
-// 		],
-// 		"%": () => [
-// 			sprite("prize"),
-// 			area(),
-// 			body({ isStatic: true }),
-// 			anchor("bot"),
-// 			offscreen({ hide: true }),
-// 			"prize",
-// 		],
-// 		"^": () => [
-// 			sprite("spike"),
-// 			area(),
-// 			body({ isStatic: true }),
-// 			anchor("bot"),
-// 			offscreen({ hide: true }),
-// 			"danger",
-// 		],
-// 		"#": () => [
-// 			sprite("apple"),
-// 			area(),
-// 			anchor("bot"),
-// 			body(),
-// 			offscreen({ hide: true }),
-// 			"apple",
-// 		],
-// 		">": () => [
-// 			sprite("ghosty"),
-// 			area(),
-// 			anchor("bot"),
-// 			body(),
-// 			// patrol(),
-// 			offscreen({ hide: true }),
-// 			"enemy",
-// 		],
-// 		"@": () => [
-// 			sprite("portal"),
-// 			area({ scale: 0.5 }),
-// 			anchor("bot"),
-// 			pos(0, -12),
-// 			offscreen({ hide: true }),
-// 			"portal",
-// 		],
-// 	},
 // }
 
-// scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
-
-// 	// add level to scene
-// 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
-
-// 	// define player object
-// 	const player = add([
-// 		sprite("bean"),
-// 		pos(0, 0),
-// 		area(),
-// 		scale(1),
-// 		// makes it fall to gravity and jumpable
-// 		body(),
-// 		// the custom component we defined above
-// 		// big(),
-// 		anchor("bot"),
-// 	])
-
-// 	// action() runs every frame
-// 	player.onUpdate(() => {
-// 		// center camera to player
-// 		camPos(player.pos)
-// 		// check fall death
-// 		if (player.pos.y >= FALL_DEATH) {
-// 			go("lose")
-// 		}
-// 	})
-
-// 	player.onBeforePhysicsResolve((collision) => {
-// 		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
-// 			collision.preventResolution()
-// 		}
-// 	})
-
-// 	player.onPhysicsResolve(() => {
-// 		// Set the viewport center to player.pos
-// 		camPos(player.pos)
-// 	})
-
-// 	// if player onCollide with any obj with "danger" tag, lose
-// 	player.onCollide("danger", () => {
-// 		go("lose")
-// 		play("hit")
-// 	})
-
-// 	player.onCollide("portal", () => {
-// 		play("portal")
-// 		if (levelId + 1 < LEVELS.length) {
-// 			go("game", {
-// 				levelId: levelId + 1,
-// 				coins: coins,
-// 			})
-// 		} else {
-// 			go("win")
-// 		}
-// 	})
-
-// 	player.onGround((l) => {
-// 		if (l.is("enemy")) {
-// 			player.jump(JUMP_FORCE * 1.5)
-// 			destroy(l)
-// 			addKaboom(player.pos)
-// 			play("powerup")
-// 		}
-// 	})
-
-// 	player.onCollide("enemy", (e, col) => {
-// 		// if it's not from the top, die
-// 		if (!col.isBottom()) {
-// 			go("lose")
-// 			play("hit")
-// 		}
-// 	})
-
-// 	let hasApple = false
-
-// 	// grow an apple if player's head bumps into an obj with "prize" tag
-// 	player.onHeadbutt((obj) => {
-// 		if (obj.is("prize") && !hasApple) {
-// 			const apple = level.spawn("#", obj.tilePos.sub(0, 1))
-// 			apple.jump()
-// 			hasApple = true
-// 			play("blip")
-// 		}
-// 	})
-
-// 	// player grows big onCollide with an "apple" obj
-// 	player.onCollide("apple", (a) => {
-// 		destroy(a)
-// 		// as we defined in the big() component
-// 		player.biggify(3)
-// 		hasApple = false
-// 		play("powerup")
-// 	})
-
-// 	let coinPitch = 0
-
-// 	onUpdate(() => {
-// 		if (coinPitch > 0) {
-// 			coinPitch = Math.max(0, coinPitch - dt() * 100)
-// 		}
-// 	})
-
-// 	player.onCollide("coin", (c) => {
-// 		destroy(c)
-// 		play("coin", {
-// 			detune: coinPitch,
-// 		})
-// 		coinPitch += 100
-// 		coins += 1
-// 		coinsLabel.text = coins
-// 	})
-
-// 	const coinsLabel = add([
-// 		text(coins),
-// 		pos(24, 24),
-// 		fixed(),
-// 	])
-
-// 	function jump() {
-// 		// these 2 functions are provided by body() component
-// 		if (player.isGrounded()) {
-// 			player.jump(JUMP_FORCE)
-// 		}
+// // custom component that makes stuff grow big
+// function big() {
+// 	let timer = 0
+// 	let isBig = false
+// 	let destScale = 1
+// 	return {
+// 		// component id / name
+// 		id: "big",
+// 		// it requires the scale component
+// 		require: [ "scale" ],
+// 		// this runs every frame
+// 		update() {
+// 			if (isBig) {
+// 				timer -= dt()
+// 				if (timer <= 0) {
+// 					this.smallify()
+// 				}
+// 			}
+// 			this.scale = this.scale.lerp(vec2(destScale), dt() * 6)
+// 		},
+// 		// custom methods
+// 		isBig() {
+// 			return isBig
+// 		},
+// 		smallify() {
+// 			destScale = 1
+// 			timer = 0
+// 			isBig = false
+// 		},
+// 		biggify(time) {
+// 			destScale = 2
+// 			timer = time
+// 			isBig = true
+// 		},
 // 	}
+// }
 
-// 	// jump with space
-// 	onKeyPress("space", jump)
+// define some constants
+const JUMP_FORCE = 1320
+const MOVE_SPEED = 480
+const FALL_DEATH = 2400
 
-// 	onKeyDown("left", () => {
-// 		player.move(-MOVE_SPEED, 0)
-// 	})
+const LEVELS = [
+	[
+		"    0       ",
+		"   --       ",
+		"       $$   ",
+		" %    ===   ",
+		"            ",
+		"   ^^  > = @",
+		"============",
+	],
+	[
+		"                          $",
+		"                          $",
+		"                          $",
+		"                          $",
+		"                          $",
+		"           $$         =   $",
+		"  %      ====         =   $",
+		"                      =   $",
+		"                      =    ",
+		"       ^^      = >    =   @",
+		"===========================",
+	],
+	[
+		"     $    $    $    $     $",
+		"     $    $    $    $     $",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		" ^^^^>^^^^>^^^^>^^^^>^^^^^@",
+		"===========================",
+	],
+]
 
-// 	onKeyDown("right", () => {
-// 		player.move(MOVE_SPEED, 0)
-// 	})
-
-// 	onKeyPress("down", () => {
-// 		player.weight = 3
-// 	})
-
-// 	onKeyRelease("down", () => {
-// 		player.weight = 1
-// 	})
-
-// 	onGamepadButtonPress("south", jump)
-
-// 	onGamepadStick("left", (v) => {
-// 		player.move(v.x * MOVE_SPEED, 0)
-// 	})
-
-// 	onKeyPress("f", () => {
-// 		setFullscreen(!isFullscreen())
-// 	})
-
-// })
-
-// k.scene("lose", () => {
-// 	k.add([
-// 		text("You Lose"),
-// 	])
-// 	onKeyPress(() => go("game"))
-// })
-
-// scene("win", () => {
-// 	add([
-// 		text("You Win"),
-// 	])
-// 	onKeyPress(() => go("game"))
-// })
-
-// go("game")
-
-
-// // npm run dev
-// kaboom()
-// Build levels with addLevel()
-
-// Start game
-kaboom()
-
-// Load assets
-loadSprite("bean", "/sprites/bean.png")
-loadSprite("coin", "/sprites/coin.png")
-loadSprite("spike", "/sprites/spike.png")
-loadSprite("grass", "/sprites/grass.png")
-loadSprite("ghosty", "/sprites/ghosty.png")
-loadSound("score", "/examples/sounds/score.mp3")
-
-const SPEED = 480
-
-setGravity(2400)
-
-const level = addLevel([
-	// Design the level layout with symbols
-	"@  ^ $$",
-	"=======",
-], {
-	// The size of each grid
+// define what each symbol means in the level graph
+const levelConf = {
 	tileWidth: 64,
 	tileHeight: 64,
-	// The position of the top left block
-	pos: vec2(100, 200),
-	// Define what each symbol means (in components)
 	tiles: {
-		"@": () => [
-			sprite("bean"),
-			area(),
-			body(),
-			anchor("bot"),
-			"player",
-		],
 		"=": () => [
 			sprite("grass"),
 			area(),
 			body({ isStatic: true }),
 			anchor("bot"),
+			offscreen({ hide: true }),
+			"platform",
+		],
+		"-": () => [
+			sprite("steel"),
+			area(),
+			body({ isStatic: true }),
+			offscreen({ hide: true }),
+			anchor("bot"),
+		],
+		"0": () => [
+			sprite("bag"),
+			area(),
+			body({ isStatic: true }),
+			offscreen({ hide: true }),
+			anchor("bot"),
 		],
 		"$": () => [
 			sprite("coin"),
 			area(),
+			pos(0, -9),
 			anchor("bot"),
+			offscreen({ hide: true }),
 			"coin",
+		],
+		"%": () => [
+			sprite("prize"),
+			area(),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"prize",
 		],
 		"^": () => [
 			sprite("spike"),
 			area(),
+			body({ isStatic: true }),
 			anchor("bot"),
+			offscreen({ hide: true }),
 			"danger",
 		],
+		"#": () => [
+			sprite("apple"),
+			area(),
+			anchor("bot"),
+			body(),
+			offscreen({ hide: true }),
+			"apple",
+		],
+		">": () => [
+			sprite("ghosty"),
+			area(),
+			anchor("bot"),
+			body(),
+			// patrol(),
+			offscreen({ hide: true }),
+			"enemy",
+		],
+		"@": () => [
+			sprite("portal"),
+			area({ scale: 0.5 }),
+			anchor("bot"),
+			pos(0, -12),
+			offscreen({ hide: true }),
+			"portal",
+		],
 	},
-})
+}
 
-// Get the player object from tag
-const player = level.get("player")[0]
+scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
-// Movements
-onKeyPress("space", () => {
-	if (player.isGrounded()) {
-		player.jump()
+	// add level to scene
+	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
+
+	// define player object
+	const player = add([
+		sprite("bean"),
+		pos(0, 0),
+		area(),
+		scale(1),
+		// makes it fall to gravity and jumpable
+		body(),
+		// the custom component we defined above
+		// big(),
+		anchor("bot"),
+	])
+
+	// action() runs every frame
+	player.onUpdate(() => {
+		// center camera to player
+		camPos(player.pos)
+		// check fall death
+		if (player.pos.y >= FALL_DEATH) {
+			go("lose")
+		}
+	})
+
+	player.onBeforePhysicsResolve((collision) => {
+		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
+			collision.preventResolution()
+		}
+	})
+
+	player.onPhysicsResolve(() => {
+		// Set the viewport center to player.pos
+		camPos(player.pos)
+	})
+
+	// if player onCollide with any obj with "danger" tag, lose
+	player.onCollide("danger", () => {
+		go("lose")
+		play("hit")
+	})
+
+	player.onCollide("portal", () => {
+		play("portal")
+		if (levelId + 1 < LEVELS.length) {
+			go("game", {
+				levelId: levelId + 1,
+				coins: coins,
+			})
+		} else {
+			go("win")
+		}
+	})
+
+	player.onGround((l) => {
+		if (l.is("enemy")) {
+			player.jump(JUMP_FORCE * 1.5)
+			destroy(l)
+			addKaboom(player.pos)
+			play("powerup")
+		}
+	})
+
+	player.onCollide("enemy", (e, col) => {
+		// if it's not from the top, die
+		if (!col.isBottom()) {
+			go("lose")
+			play("hit")
+		}
+	})
+
+	let hasApple = false
+
+	// grow an apple if player's head bumps into an obj with "prize" tag
+	player.onHeadbutt((obj) => {
+		if (obj.is("prize") && !hasApple) {
+			const apple = level.spawn("#", obj.tilePos.sub(0, 1))
+			apple.jump()
+			hasApple = true
+			play("blip")
+		}
+	})
+
+	// player grows big onCollide with an "apple" obj
+	player.onCollide("apple", (a) => {
+		destroy(a)
+		// as we defined in the big() component
+		player.biggify(3)
+		hasApple = false
+		play("powerup")
+	})
+
+	let coinPitch = 0
+
+	onUpdate(() => {
+		if (coinPitch > 0) {
+			coinPitch = Math.max(0, coinPitch - dt() * 100)
+		}
+	})
+
+	player.onCollide("coin", (c) => {
+		destroy(c)
+		play("coin", {
+			detune: coinPitch,
+		})
+		coinPitch += 100
+		coins += 1
+		coinsLabel.text = coins
+	})
+
+	const coinsLabel = add([
+		text(coins),
+		pos(24, 24),
+		fixed(),
+	])
+
+	function jump() {
+		// these 2 functions are provided by body() component
+		if (player.isGrounded()) {
+			player.jump(JUMP_FORCE)
+		}
 	}
+
+	// jump with space
+	onKeyPress("space", jump)
+
+	onKeyDown("left", () => {
+		player.move(-MOVE_SPEED, 0)
+	})
+
+	onKeyDown("right", () => {
+		player.move(MOVE_SPEED, 0)
+	})
+
+	onKeyPress("down", () => {
+		player.weight = 3
+	})
+
+	onKeyRelease("down", () => {
+		player.weight = 1
+	})
+
+	onGamepadButtonPress("south", jump)
+
+	onGamepadStick("left", (v) => {
+		player.move(v.x * MOVE_SPEED, 0)
+	})
+
+	onKeyPress("f", () => {
+		setFullscreen(!isFullscreen())
+	})
+
 })
 
-onKeyDown("left", () => {
-	player.move(-SPEED, 0)
+k.scene("lose", () => {
+	k.add([
+		text("You Lose"),
+	])
+	onKeyPress(() => go("game"))
 })
 
-onKeyDown("right", () => {
-	player.move(SPEED, 0)
+scene("win", () => {
+	add([
+		text("You Win"),
+	])
+	onKeyPress(() => go("game"))
 })
 
-// Back to the original position if hit a "danger" item
-player.onCollide("danger", () => {
-	player.pos = level.tile2Pos(0, 0)
-})
+go("game")
 
-// Eat the coin!
-player.onCollide("coin", (coin) => {
-	destroy(coin)
-	play("score")
-})
+
+// npm run dev
+kaboom()
+Build levels with addLevel()
