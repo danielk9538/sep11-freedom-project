@@ -19,7 +19,7 @@ k.loadSound("blip", "/examples/sounds/blip.mp3")
 k.loadSound("hit", "/examples/sounds/hit.mp3")
 k.loadSound("portal", "/examples/sounds/portal.mp3")
 
-k.setBackground(blue);
+k.setBackground();
 
 k.add([
 	rect(width(), 100),
