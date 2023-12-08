@@ -1,7 +1,6 @@
 import kaboom from "kaboom"
 
-// const k =
-kaboom()
+const k = kaboom()
 
 k.loadSprite("bean", "sprites/bean.png")
 k.loadSprite("bean", "/sprites/bean.png")
