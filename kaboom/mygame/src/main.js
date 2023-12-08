@@ -19,7 +19,7 @@ k.loadSound("blip", "/examples/sounds/blip.mp3")
 k.loadSound("hit", "/examples/sounds/hit.mp3")
 k.loadSound("portal", "/examples/sounds/portal.mp3")
 
-setbackground: [141, 183, 255]
+k.setbackground (, 183, 255)
 
 k.add([
 	rect(width(), 100),
