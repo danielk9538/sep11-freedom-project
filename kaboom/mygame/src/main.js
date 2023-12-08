@@ -6,7 +6,7 @@ k.loadSprite("bean", "sprites/bean.png")
 k.loadSprite("bean", "/sprites/bean.png")
 k.loadSprite("bag", "/sprites/bag.png")
 k.loadSprite("ghosty", "/sprites/ghosty.png")
-k.loadSprite("spike", "/sprites/spike.png" width)
+k.loadSprite("spike", "/sprites/spike.png")
 k.loadSprite("grass", "/sprites/grass.png")
 k.loadSprite("steel", "/sprites/steel.png")
 k.loadSprite("prize", "/sprites/jumpy.png")
@@ -19,7 +19,7 @@ k.loadSound("blip", "/examples/sounds/blip.mp3")
 k.loadSound("hit", "/examples/sounds/hit.mp3")
 k.loadSound("portal", "/examples/sounds/portal.mp3")
 
-// k.setBackground();
+k.setBackground([255, 205, 0]);
 
 k.add([
 	rect(width(), 100),
@@ -190,6 +190,7 @@ const levelConf = {
 		"^": () => [
 			sprite("spike"),
 			area(),
+			scale
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
