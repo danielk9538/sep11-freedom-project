@@ -124,7 +124,7 @@ const levelConf = {
 	tileHeight: 64,
 	tiles: {
 		"=": () => [
-			sprite("grass"),
+			sprite("hedge"),
 			area(),
 			scale(.095),
 			body({ isStatic: true }),
