@@ -41,22 +41,22 @@ k.add([
 	pos(12, 12),
 ])
 // custom component controlling enemy patrol movement
-// function patrol(speed = 60, dir = 1) {
-// 	return {
-// 		id: "patrol",
-// 		require: [ "pos", "area" ],
-// 		add() {
-// 			this.on("collide", (obj, col) => {
-// 				if (col.isLeft() || col.isRight()) {
-// 					dir = -dir
-// 				}
-// 			})
-// 		},
-// 		update() {
-// 			this.move(speed * dir, 0)
-// 		},
-// 	}
-// }
+function patrol(speed = 60, dir = 1) {
+	return {
+		id: "patrol",
+		require: [ "pos", "area" ],
+		add() {
+			this.on("collide", (obj, col) => {
+				if (col.isLeft() || col.isRight()) {
+					dir = -dir
+				}
+			})
+		},
+		update() {
+			this.move(speed * dir, 0)
+		},
+	}
+}
 
 // define some constants
 const JUMP_FORCE = 1000
