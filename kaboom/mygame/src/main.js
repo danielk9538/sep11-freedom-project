@@ -35,73 +35,27 @@ setGravity(2400)
 
 const SPEED = 320
 
-//player1 code
-const player1 = add([
-	k.pos(120, 80),
-	k.sprite("bean"),
-	k.area(),
-	k.body(),
-])
-
-onKeyDown("a", () => {
-	player1.move(-SPEED, 0)
-})
-onKeyDown("d", () => {
-	player1.move(SPEED, 0)
-})
-onKeyPress("w", () => {
-	// .isGrounded() is provided by body()
-	if (player1.isGrounded()) {
-		// .jump() is provided by body()
-		player1.jump()
-	}
-})
-//end
-
-//player2 code
-const player2 = add([
-	sprite("bean"),
-	pos(center()),
-	area(),
-	body(),
-])
-
-onKeyDown("left", () => {
-	player2.move(-SPEED, 0)
-})
-onKeyDown("right", () => {
-	player2.move(SPEED, 0)
-})
-onKeyPress("up", () => {
-	// .isGrounded() is provided by body()
-	if (player2.isGrounded()) {
-		// .jump() is provided by body()
-		player2.jump()
-	}
-})
-//end
-
 k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
 ])
 // custom component controlling enemy patrol movement
-function patrol(speed = 60, dir = 1) {
-	return {
-		id: "patrol",
-		require: [ "pos", "area" ],
-		add() {
-			this.on("collide", (obj, col) => {
-				if (col.isLeft() || col.isRight()) {
-					dir = -dir
-				}
-			})
-		},
-		update() {
-			this.move(speed * dir, 0)
-		},
-	}
-}
+// function patrol(speed = 60, dir = 1) {
+// 	return {
+// 		id: "patrol",
+// 		require: [ "pos", "area" ],
+// 		add() {
+// 			this.on("collide", (obj, col) => {
+// 				if (col.isLeft() || col.isRight()) {
+// 					dir = -dir
+// 				}
+// 			})
+// 		},
+// 		update() {
+// 			this.move(speed * dir, 0)
+// 		},
+// 	}
+// }
 
 // define some constants
 const JUMP_FORCE = 1320
@@ -110,38 +64,58 @@ const FALL_DEATH = 2400
 
 const LEVELS = [
 	[
-		"    0       ",
-		"   --       ",
-		"       $$   ",
-		" %    ===   ",
-		"            ",
-		"   ^^  > = @",
-		"============",
+		"                                         $",
+		"                                         $",
+		"                                         $",
+		"                                         $",
+		"                                         $",
+		"==========================================",
+		"                                         $",
+		"                                         $",
+		"                                         $",
+		"                                         $",
+		"                                         $",
+		"==========================================",
+		"                          $$         =   $",
+		"                        ====         =   $",
+		"                                     =   $",
+		"   %                                 =    ",
+		"                      ^^      = >    =   @",
+		"==========================================",
 	],
-	[
-		"                          $",
-		"                          $",
-		"                          $",
-		"                          $",
-		"                          $",
-		"           $$         =   $",
-		"  %      ====         =   $",
-		"                      =   $",
-		"                      =    ",
-		"       ^^      = >    =   @",
-		"===========================",
-	],
-	[
-		"     $    $    $    $     $",
-		"     $    $    $    $     $",
-		"                           ",
-		"                           ",
-		"                           ",
-		"                           ",
-		"                           ",
-		" ^^^^>^^^^>^^^^>^^^^>^^^^^@",
-		"===========================",
-	],
+	// [
+	// 	"    0       ",
+	// 	"   --       ",
+	// 	"       $$   ",
+	// 	" %    ===   ",
+	// 	"            ",
+	// 	"   ^^  > = @",
+	// 	"============",
+	// ],
+	// [
+	// 	"                          $",
+	// 	"                          $",
+	// 	"                          $",
+	// 	"                          $",
+	// 	"                          $",
+	// 	"           $$         =   $",
+	// 	"  %      ====         =   $",
+	// 	"                      =   $",
+	// 	"                      =    ",
+	// 	"       ^^      = >    =   @",
+	// 	"===========================",
+	// ],
+	// [
+	// 	"     $    $    $    $     $",
+	// 	"%    $    $    $    $     $",
+	// 	"                           ",
+	// 	"                           ",
+	// 	"                           ",
+	// 	"                           ",
+	// 	"      >   >                ",
+	// 	"  ^^^^=^^^=^^^^>^^^^>^^^^^@",
+	// 	"===========================",
+	// ],
 ]
 
 // define what each symbol means in the level graph
@@ -158,6 +132,7 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"platform",
 		],
+
 		"-": () => [
 			sprite("steel"),
 			area(),
@@ -191,7 +166,7 @@ const levelConf = {
 		"^": () => [
 			sprite("spike"),
 			area(),
-			scale(.3),
+			scale(.2),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -208,6 +183,7 @@ const levelConf = {
 		">": () => [
 			sprite("ghosty"),
 			area(),
+			scale(1.1),
 			anchor("bot"),
 			body(),
 			// patrol(),
@@ -299,51 +275,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		}
 	})
 
-	let hasApple = false
-
-	// grow an apple if player's head bumps into an obj with "prize" tag
-	player.onHeadbutt((obj) => {
-		if (obj.is("prize") && !hasApple) {
-			const apple = level.spawn("#", obj.tilePos.sub(0, 1))
-			apple.jump()
-			hasApple = true
-			play("blip")
-		}
-	})
-
-	// player grows big onCollide with an "apple" obj
-	player.onCollide("apple", (a) => {
-		destroy(a)
-		// as we defined in the big() component
-		player.biggify(3)
-		hasApple = false
-		play("powerup")
-	})
-
-	let coinPitch = 0
-
-	onUpdate(() => {
-		if (coinPitch > 0) {
-			coinPitch = Math.max(0, coinPitch - dt() * 100)
-		}
-	})
-
-	player.onCollide("coin", (c) => {
-		destroy(c)
-		play("coin", {
-			detune: coinPitch,
-		})
-		coinPitch += 100
-		coins += 1
-		coinsLabel.text = coins
-	})
-
-	const coinsLabel = add([
-		text(coins),
-		pos(24, 24),
-		fixed(),
-	])
-
 	function jump() {
 		// these 2 functions are provided by body() component
 		if (player.isGrounded()) {
@@ -353,20 +284,34 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 	// jump with space
 	onKeyPress("space", jump)
+	onKeyPress("up", jump)
+	onKeyPress("w", jump)
 
 	onKeyDown("left", () => {
+		player.move(-MOVE_SPEED, 0)
+	})
+	onKeyDown("a", () => {
 		player.move(-MOVE_SPEED, 0)
 	})
 
 	onKeyDown("right", () => {
 		player.move(MOVE_SPEED, 0)
 	})
+	onKeyDown("d", () => {
+		player.move(MOVE_SPEED, 0)
+	})
 
 	onKeyPress("down", () => {
 		player.weight = 3
 	})
+	onKeyPress("s", () => {
+		player.weight = 3
+	})
 
 	onKeyRelease("down", () => {
+		player.weight = 1
+	})
+	onKeyRelease("s", () => {
 		player.weight = 1
 	})
 
