@@ -59,7 +59,7 @@ k.add([
 // }
 
 // define some constants
-const JUMP_FORCE = 1320
+const JUMP_FORCE = 1000
 const MOVE_SPEED = 480
 const FALL_DEATH = 2400
 
@@ -80,7 +80,7 @@ const LEVELS = [
 		"                          $$         =   $",
 		"                        ====         =   $",
 		"                                     =   $",
-		" %                                   =    ",
+		" %                                        ",
 		"        ^^    ^^^     ^^      = >    =   @",
 		"==========================================",
 	],
