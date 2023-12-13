@@ -126,7 +126,7 @@ const levelConf = {
 		"=": () => [
 			sprite("grass"),
 			area(),
-			scale(.09),
+			scale(.095),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
