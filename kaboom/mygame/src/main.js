@@ -8,6 +8,7 @@ k.loadSprite("bag", "/sprites/bag.png")
 k.loadSprite("ghosty", "/sprites/ghosty.png")
 k.loadSprite("spike", "/sprites/spike.png")
 k.loadSprite("grass", "/sprites/grass.png")
+k.loadSprite("hedge", "/sprites/hedge.png")
 k.loadSprite("steel", "/sprites/steel.png")
 k.loadSprite("prize", "/sprites/jumpy.png")
 k.loadSprite("apple", "/sprites/apple.png")
@@ -126,7 +127,7 @@ const levelConf = {
 		"=": () => [
 			sprite("hedge"),
 			area(),
-			scale(.095),
+			scale(.76),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
