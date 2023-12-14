@@ -32,7 +32,7 @@ k.add([
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-setGravity(2400)
+setGravity(100)
 
 const SPEED = 320
 
@@ -59,7 +59,7 @@ function patrol(speed = 60, dir = 1) {
 }
 
 // define some constants
-const JUMP_FORCE = 1000
+const JUMP_FORCE = 500
 const MOVE_SPEED = 480
 const FALL_DEATH = 2400
 
@@ -132,7 +132,7 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"platform",
-			fixed(),
+			// fixed(),
 		],
 
 		"-": () => [
@@ -173,7 +173,7 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger",
-			fixed(),
+			// fixed(),
 		],
 		"<": () => [
 			sprite("spike"),
@@ -184,7 +184,7 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"danger",
 			rotate(180),
-			fixed(),
+			// fixed(),
 		],
 		"#": () => [
 			sprite("apple"),
