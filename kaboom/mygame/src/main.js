@@ -173,6 +173,15 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"danger",
 		],
+		"<": () => [
+			sprite("spike"),
+			area(),
+			scale(.2),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"danger",
+		],
 		"#": () => [
 			sprite("apple"),
 			area(),
