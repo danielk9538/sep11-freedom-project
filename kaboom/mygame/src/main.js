@@ -231,7 +231,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		// the custom component we defined above
 		// big(),
 		anchor("bot"),
-		pos(width() / 2, height() - 64),
 	])
 
 	// action() runs every frame
