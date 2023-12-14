@@ -184,7 +184,6 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"danger",
 			pos(0, -66),
-
 			rotate(180),
 			// fixed(),
 		],
@@ -241,7 +240,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		camPos(player.pos)
 		// check fall death
 		if (player.pos.y >= FALL_DEATH) {
-			go("lose")
+			go("death")
 		}
 	})
 
@@ -258,7 +257,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 	// if player onCollide with any obj with "danger" tag, lose
 	player.onCollide("danger", () => {
-		go("lose")
+		go("death")
 		play("hit")
 	})
 
@@ -286,7 +285,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	player.onCollide("enemy", (e, col) => {
 		// if it's not from the top, die
 		if (!col.isBottom()) {
-			go("lose")
+			go("death")
 			play("hit")
 		}
 	})
@@ -343,9 +342,10 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 })
 
-k.scene("lose", () => {
+k.scene("death", () => {
 	k.add([
 		text("You Died"),
+		pos(center),
 	])
 	onKeyPress(() => go("game"))
 })
