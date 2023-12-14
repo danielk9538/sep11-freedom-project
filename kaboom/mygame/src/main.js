@@ -132,7 +132,6 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"platform",
-			pos(0,0),
 		],
 
 		"-": () => [
