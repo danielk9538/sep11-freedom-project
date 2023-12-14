@@ -183,7 +183,7 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"platform",
-			pos(0, 100),
+			pos(0, -70),
 
 			rotate(180),
 			// fixed(),
