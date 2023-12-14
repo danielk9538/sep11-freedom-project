@@ -65,7 +65,7 @@ const FALL_DEATH = 2400
 
 const LEVELS = [
 	[
-		"     ^  ^  ^                             $",
+		"     <  <  <                             $",
 		"                                         $",
 		"                                         $",
 		"                                         $",
@@ -132,6 +132,7 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"platform",
+			
 		],
 
 		"-": () => [
