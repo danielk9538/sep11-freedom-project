@@ -66,7 +66,7 @@ const LEVELS = [
 	[
 		" =========================================",
 		"     <  <  <  =                          $",
-		"              =                          $",
+		// "              =                          $",
 		"              =                          $",
 		"              =                          $",
 		"     =  =  =     ^  ^  ^     ^    ^  ^   $",
@@ -172,7 +172,7 @@ const levelConf = {
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
-			"platform",
+			"danger",
 			// fixed(),
 		],
 		"<": () => [
@@ -182,8 +182,8 @@ const levelConf = {
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
-			"platform",
-			pos(0, -70),
+			"danger",
+			pos(0, -66),
 
 			rotate(180),
 			// fixed(),
