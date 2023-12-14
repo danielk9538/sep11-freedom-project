@@ -173,6 +173,7 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger",
+			fixed(),
 		],
 		"<": () => [
 			sprite("spike"),
@@ -182,6 +183,8 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger",
+			rotate(180),
+			fixed(),
 		],
 		"#": () => [
 			sprite("apple"),
