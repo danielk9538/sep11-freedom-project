@@ -345,7 +345,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 k.scene("death", () => {
 	k.add([
 		text("You Died"),
-		pos(center),
+		pos(0,0),
 	])
 	onKeyPress(() => go("game"))
 })
