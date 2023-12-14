@@ -21,13 +21,13 @@ k.loadSound("portal", "/examples/sounds/portal.mp3")
 
 k.setBackground([255, 205, 0]);
 
-k.add([
-	rect(width(), 100),
-	outline(4),
-	area(),
-	pos(0, height() - 48),
-	body({ isStatic: true }),
-])
+// k.add([
+// 	rect(width(), 100),
+// 	outline(4),
+// 	area(),
+// 	pos(0, height() - 48),
+// 	body({ isStatic: true }),
+// ])
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
