@@ -172,7 +172,7 @@ const levelConf = {
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
-			"danger",
+			"platform",
 			// fixed(),
 		],
 		"<": () => [
@@ -182,7 +182,7 @@ const levelConf = {
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
-			"danger",
+			"platform",
 			pos(0, 100),
 
 			rotate(180),
