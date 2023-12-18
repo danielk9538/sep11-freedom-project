@@ -246,7 +246,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	// define player object
 	const player = add([
 		sprite("bean"),
-		pos(0, 0),
+		pos(100),
 		area(),
 		scale(1),
 		// makes it fall to gravity and jumpable
