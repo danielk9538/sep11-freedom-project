@@ -153,8 +153,8 @@ const LEVELS = [
 
 // define what each symbol means in the level graph
 const levelConf = {
-	tileWidth: 80,
-	tileHeight: 80,
+	tileWidth: 64,
+	tileHeight: 64,
 	tiles: {
 		"=": () => [
 			sprite("hedge"),
@@ -199,11 +199,12 @@ const levelConf = {
 		"^": () => [
 			sprite("spike"),
 			area(),
-			scale(0.15,.2),
+			// scale(0.15,.2),
+			scale(0.15),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
-			"platform",
+			"danger",
 			// fixed(),
 		],
 		"<": () => [
