@@ -31,7 +31,7 @@ k.setBackground([255, 205, 0]);
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-setGravity(3000)
+setGravity(2500)
 
 const SPEED = 320
 
@@ -58,7 +58,7 @@ function patrol(speed = 60, dir = 1) {
 }
 
 // define some constants
-const JUMP_FORCE = 1100
+const JUMP_FORCE = 1000
 const MOVE_SPEED = 480
 const FALL_DEATH = 2400
 
