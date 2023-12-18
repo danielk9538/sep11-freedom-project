@@ -261,7 +261,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		// makes it fall to gravity and jumpable
 		body(),
 		// the custom component we defined above
-		// big(),
 		anchor("bot"),
 	])
 
