@@ -31,7 +31,7 @@ k.setBackground([255, 205, 0]);
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-setGravity(2500)
+setGravity(3000)
 
 const SPEED = 320
 
