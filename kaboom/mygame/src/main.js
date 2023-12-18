@@ -31,7 +31,7 @@ k.setBackground([255, 205, 0]);
 
 k.onClick(() => k.addKaboom(k.mousePos()))
 
-setGravity(3000)
+setGravity(2000)
 
 const SPEED = 320
 
@@ -58,7 +58,7 @@ function patrol(speed = 60, dir = 1) {
 }
 
 // define some constants
-const JUMP_FORCE = 1000
+const JUMP_FORCE = 900
 const MOVE_SPEED = 480
 const FALL_DEATH = 2400
 
@@ -269,23 +269,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 			})
 		} else {
 			go("win")
-		}
-	})
-
-	player.onGround((l) => {
-		if (l.is("enemy")) {
-			player.jump(JUMP_FORCE * 1.5)
-			destroy(l)
-			addKaboom(player.pos)
-			play("powerup")
-		}
-	})
-
-	player.onCollide("enemy", (e, col) => {
-		// if it's not from the top, die
-		if (!col.isBottom()) {
-			go("death")
-			play("hit")
 		}
 	})
 
