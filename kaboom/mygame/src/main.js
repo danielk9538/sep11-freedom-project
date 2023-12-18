@@ -225,7 +225,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		sprite("bean"),
 		pos(0, 250),
 		area(),
-		scale(1),
+		scale(1.5),
 		// makes it fall to gravity and jumpable
 		body(),
 		// the custom component we defined above
