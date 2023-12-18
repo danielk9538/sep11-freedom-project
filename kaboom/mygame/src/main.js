@@ -21,17 +21,7 @@ k.loadSound("portal", "/examples/sounds/portal.mp3")
 
 k.setBackground([255, 205, 0]);
 
-// k.add([
-// 	rect(width(), 100),
-// 	outline(4),
-// 	area(),
-// 	pos(0, height() - 48),
-// 	body({ isStatic: true }),
-// ])
-
-k.onClick(() => k.addKaboom(k.mousePos()))
-
-setGravity(3000)
+setGravity(2500)
 
 const SPEED = 320
 
@@ -60,7 +50,7 @@ function patrol(speed = 60, dir = 1) {
 // define some constants
 const JUMP_FORCE = 1000
 const MOVE_SPEED = 480
-const FALL_DEATH = 40000
+const FALL_DEATH = 4000
 
 const LEVELS = [
 	[
