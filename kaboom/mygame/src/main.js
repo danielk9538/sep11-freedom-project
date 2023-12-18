@@ -60,7 +60,7 @@ function patrol(speed = 60, dir = 1) {
 // define some constants
 const JUMP_FORCE = 1000
 const MOVE_SPEED = 480
-const FALL_DEATH = 2400
+const FALL_DEATH = 40000
 
 const LEVELS = [
 	[
@@ -153,8 +153,8 @@ const LEVELS = [
 
 // define what each symbol means in the level graph
 const levelConf = {
-	tileWidth: 64,
-	tileHeight: 64,
+	tileWidth: 80,
+	tileHeight: 80,
 	tiles: {
 		"=": () => [
 			sprite("hedge"),
@@ -255,7 +255,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	// define player object
 	const player = add([
 		sprite("bean"),
-		pos(0, 1200),
+		pos(0, 0),
 		area(),
 		scale(1),
 		// makes it fall to gravity and jumpable
