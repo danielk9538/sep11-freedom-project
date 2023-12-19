@@ -228,7 +228,7 @@ const levelConf = {
 			"enemy",
 		],
 		"@": () => [
-			sprite("portal"),
+			sprite("bean"),
 			area({ scale: 0.5 }),
 			anchor("bot"),
 			pos(0, -12),
