@@ -152,7 +152,7 @@ const levelConf = {
 			scale(1),
 			body({ isStatic: true }),
 			anchor("bot"),
-			offscreen({ hide: true }),
+			// offscreen({ hide: true }),
 			"platform",
 		],
 
