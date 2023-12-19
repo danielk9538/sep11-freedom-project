@@ -255,16 +255,16 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 
 	// define player object
-	// const player = add([
-	// 	sprite("bean"),
-	// 	pos(100),
-	// 	area(),
-	// 	scale(1),
-	// 	// makes it fall to gravity and jumpable
-	// 	body(),
-	// 	// the custom component we defined above
-	// 	anchor("bot"),
-	// ])
+	const player = add([
+		sprite("bean"),
+		pos(100),
+		area(),
+		scale(1),
+		// makes it fall to gravity and jumpable
+		body(),
+		// the custom component we defined above
+		anchor("bot"),
+	])
 
 	// action() runs every frame
 	player.onUpdate(() => {
