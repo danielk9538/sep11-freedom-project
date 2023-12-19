@@ -102,8 +102,8 @@ const LEVELS = [
 		"                          $$         =   $",
 		"                        ====         =   $",
 		"                                     =   $",
-		" %                                        ",
-		"  &     ^^    ^^^     ^^      = > >   =   @",
+		" &                                        ",
+		"       ^^    ^^^     ^^      = > >   =   @",
 		"==========================================",
 	],
 	// [
@@ -149,7 +149,7 @@ const levelConf = {
 		"=": () => [
 			sprite("hedge"),
 			area(),
-			scale(1),
+			scale(.80),
 			body({ isStatic: true }),
 			anchor("bot"),
 			// offscreen({ hide: true }),
