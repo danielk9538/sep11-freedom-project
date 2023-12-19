@@ -149,7 +149,7 @@ const levelConf = {
 		"=": () => [
 			sprite("hedge"),
 			area(),
-			scale(.80	),
+			scale(1),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
