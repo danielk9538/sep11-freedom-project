@@ -24,7 +24,7 @@ const levelConf = {
 		],
 ```
 
-The snippet below is a portion of my landscape made into a grid. The grid allows me to use the symbols I defined earlier and create a simple layout through basic design. The method allows me to view my landscape and how its percieved from a fullscreen. Although its easy to use, Its irratating when I change a few things and the rest of the row isn't lined up.
+The snippet below is a scene or grid of my landscape. The grid allows me to use the symbols I defined earlier and create a simple layout through basic design. The method allows me to view my landscape and how its percieved from a fullscreen. Although its easy to use, Its irratating when I change a few things and the rest of the row isn't lined up.
 
 ```javascript
 const LEVELS = [
@@ -48,6 +48,15 @@ const LEVELS = [
 		"=          ===       ^====                                        =",
 		"===================================================================",
 ```
+The snippet shown here is
+```javascript
+scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+
+	// add level to scene
+	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
+	//gets the player rules from levels area
+	const player = level.get("player")[0]
+    ```
 
 [Previous](entry01.md) | [Next](entry03.md)
 
