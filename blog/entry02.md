@@ -24,7 +24,7 @@ const levelConf = {
 		],
 ```
 
-The snippet below is a portion of my landscape made into a grid. The grid allows me to use the symbols I defined earlier and create a simple layout through basic design. The method allows me to view my landscape and how its percieved from a fullscreen. Although its easy to use, Its irratating when I change a few things and the rest of the row isn't 
+The snippet below is a portion of my landscape made into a grid. The grid allows me to use the symbols I defined earlier and create a simple layout through basic design. The method allows me to view my landscape and how its percieved from a fullscreen. Although its easy to use, Its irratating when I change a few things and the rest of the row isn't lined up.
 
 ```javascript
 const LEVELS = [
