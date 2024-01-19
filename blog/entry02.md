@@ -1,9 +1,7 @@
 # Entry 2
 ##### 12/8/23
 
-For this part of my project, I've mostly been designing the layout of my platformer game while adjusting gravity and attributes of each sprite to create an difficult yet enjoying parkour map.
-
-Using constants and symbols to design my landscape as if it were on my codespace.
+For this part of my project, I've mostly been designing the layout of my platformer game while adjusting gravity and attributes of each sprite to create an difficult yet enjoying parkour map. Using constants and symbols to design my landscape as if it were on my codespace.
 
 This snippet is to specify the definition of a symbol that I'd like to use in the landscape. The example shown below is the grassblocks that make up most of the neutral ground. Giving it an image to display, size, whether or not the player can go through it, and if the sprite can be moved off screen.
 
@@ -48,7 +46,8 @@ const LEVELS = [
 		"=          ===       ^====                                        =",
 		"===================================================================",
 ```
-The snippet shown here is
+The snippet shown here is the code to display the scene(snippet above) when the game begins. The scene also functions to create levels throughout the scene, a new landscape. Although, I only used one level for my scene as its an ongoing parkour map so, I didn't see a point to use more levels. This idea my change based on the development of my platformer game.
+
 ```javascript
 scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
