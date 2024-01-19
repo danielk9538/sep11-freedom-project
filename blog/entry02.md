@@ -57,6 +57,10 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	const player = level.get("player")[0]
     ```
 
+The skills I used throughout this entry was creativity in my layout and the results of how my definitions may be effected such in falldamage and gravity. As of creating this entry I still struggle with the gravity and falldamage as sometimes my player sprite may fall through the ground after long fall due to gravity.
+
+As for my decision of picking Kaboom, I don't regret it as its easy to use and there are many tutorial videos if i ever get stuck.
+
 [Previous](entry01.md) | [Next](entry03.md)
 
 [Home](../README.md)
