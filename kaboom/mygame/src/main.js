@@ -20,7 +20,7 @@ k.loadSound("blip", "/examples/sounds/blip.mp3")
 k.loadSound("hit", "/examples/sounds/hit.mp3")
 k.loadSound("portal", "/examples/sounds/portal.mp3")
 
-k.setBackground([255, 205, 0]);
+k.setBackground([40, 180, 99]);
 
 setGravity(2500)
 
