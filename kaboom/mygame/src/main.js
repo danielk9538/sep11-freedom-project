@@ -145,13 +145,13 @@ const levelConf = {
 	tileHeight: 64,
 	tiles: {
 		"=": () => [
-			sprite(""hedge"),
+			sprite("hedge"),
 			area(),
 			scale(2),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
-			"platform,
+			"platform",
 		],
 
 		"-": () => [
