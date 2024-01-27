@@ -259,9 +259,6 @@ const levelConf = {
 		]
 	},
 }
-onCollide("sun", "earth", () => {
-    addExplosion()
-})
 
 scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
@@ -297,7 +294,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		play("hit")
 	})
 	player.onCollide("danger2", () => {
-
+		push()
 	})
 
 	player.onCollide("portal", () => {
