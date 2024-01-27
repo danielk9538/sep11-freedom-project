@@ -250,10 +250,12 @@ const levelConf = {
 		">": () => [
 			sprite("acid"),
 			area(),
-			scale(2),
-			body(),
+			scale(1.4),
+			body({ isStatic: true }),
 			anchor("bot"),
+			offscreen({ hide: true }),
 			"danger",
+			// fixed(),
 		]
 	},
 }
