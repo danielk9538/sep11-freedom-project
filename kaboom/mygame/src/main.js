@@ -5,7 +5,7 @@ const k = kaboom()
 k.loadSprite("bean", "sprites/player.png")
 k.loadSprite("bag", "/sprites/bag.png")
 k.loadSprite("ghosty", "/sprites/ghosty.png")
-k.loadSprite("spike", "/sprites/spike.png")
+k.loadSprite("venus", "/sprites/venus.png")
 k.loadSprite("grass", "/sprites/grass.png")
 k.loadSprite("hedge", "/sprites/hedge.png")
 k.loadSprite("steel", "/sprites/steel.png")
@@ -185,10 +185,11 @@ const levelConf = {
 			"prize",
 		],
 		"^": () => [
-			sprite("spike"),
+			sprite("venus"),
 			area(),
 			// scale(0.15,.2),
-			scale(0.15),
+			// scale(0.15),
+			scale(1),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -196,9 +197,10 @@ const levelConf = {
 			// fixed(),
 		],
 		"<": () => [
-			sprite("spike"),
+			sprite("venus"),
 			area(),
-			scale(0.15,.2),
+			scale(1),
+			// 0.15,.2
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
