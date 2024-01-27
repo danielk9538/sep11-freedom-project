@@ -13,7 +13,7 @@ k.loadSprite("prize", "/sprites/jumpy.png")
 k.loadSprite("apple", "/sprites/apple.png")
 k.loadSprite("portal", "/sprites/portal.png")
 k.loadSprite("coin", "/sprites/coin.png")
-k.loadSprite("acid", "/)
+k.loadSprite("acid", "/sprites/acid.png")
 k.loadSound("coin", "/examples/sounds/score.mp3")
 k.loadSound("powerup", "/examples/sounds/powerup.mp3")
 k.loadSound("blip", "/examples/sounds/blip.mp3")
@@ -241,8 +241,8 @@ const levelConf = {
 			anchor("bot"),
 			"player",
 		],
-		"": () => [
-			sprite(""),
+		"<": () => [
+			sprite("acid"),
 			area(),
 			scale(1),
 			body(),
