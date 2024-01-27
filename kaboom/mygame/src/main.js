@@ -3,6 +3,13 @@ import kaboom from "kaboom"
 const k = kaboom()
 
 k.loadSprite("player", "sprites/player1.png")
+k.loadSprite("player1", "sprites/player2.png")
+k.loadSprite("player2", "sprites/player3.png")
+k.loadSprite("player3", "sprites/player4.png")
+k.loadSprite("player4", "sprites/player5.png")
+k.loadSprite("player5", "sprites/player6.png")
+k.loadSprite("player6", "sprites/player7.png")
+k.loadSprite("player7", "sprites/player8.png")
 k.loadSprite("bag", "/sprites/bag.png")
 k.loadSprite("ghosty", "/sprites/ghosty.png")
 k.loadSprite("venus", "/sprites/venus.png")
