@@ -249,6 +249,7 @@ const levelConf = {
 		],
 		">": () => [
 			sprite("acid"),
+			onConlide
 			area(),
 			scale(1.4),
 			body({ isStatic: true }),
