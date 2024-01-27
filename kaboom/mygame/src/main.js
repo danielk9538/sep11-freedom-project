@@ -254,7 +254,7 @@ const levelConf = {
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
-			"danger",
+			"danger2",
 			// fixed(),
 		]
 	},
@@ -295,6 +295,9 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	player.onCollide("danger", () => {
 		go("death")
 		play("hit")
+	})
+	player.onCollide("danger2", () => {
+
 	})
 
 	player.onCollide("portal", () => {
