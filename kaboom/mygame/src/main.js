@@ -197,7 +197,7 @@ const levelConf = {
 		"<": () => [
 			sprite("venus"),
 			area(),
-			scale(2),
+			scale(1.5 , 2),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
