@@ -147,7 +147,7 @@ const levelConf = {
 		"=": () => [
 			sprite("hedge"),
 			area(),
-			scale(.80),
+			scale(2),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -187,9 +187,7 @@ const levelConf = {
 		"^": () => [
 			sprite("venus"),
 			area(),
-			// scale(0.15,.2),
-			// scale(0.15),
-			scale(1),
+			scale(2),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -199,8 +197,7 @@ const levelConf = {
 		"<": () => [
 			sprite("venus"),
 			area(),
-			scale(1),
-			// 0.15,.2
+			scale(2),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
