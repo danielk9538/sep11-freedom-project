@@ -2,7 +2,7 @@ import kaboom from "kaboom"
 
 const k = kaboom()
 
-k.loadSprite("bean", "sprites/player.png")
+k.loadSprite("bean", "sprites/player1.png")
 k.loadSprite("bag", "/sprites/bag.png")
 k.loadSprite("ghosty", "/sprites/ghosty.png")
 k.loadSprite("venus", "/sprites/venus.png")
