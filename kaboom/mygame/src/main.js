@@ -249,9 +249,6 @@ const levelConf = {
 		],
 		">": () => [
 			sprite("acid"),
-			onCollide("sun", "earth", () => {
-				addExplosion()
-			})
 			area(),
 			scale(1.4),
 			body({ isStatic: true }),
@@ -262,6 +259,9 @@ const levelConf = {
 		]
 	},
 }
+onCollide("sun", "earth", () => {
+    addExplosion()
+})
 
 scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
