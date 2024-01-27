@@ -249,7 +249,9 @@ const levelConf = {
 		],
 		">": () => [
 			sprite("acid"),
-			onConlide
+			onCollide("sun", "earth", () => {
+				addExplosion()
+			})
 			area(),
 			scale(1.4),
 			body({ isStatic: true }),
