@@ -214,7 +214,7 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"apple",
 		],
-		">": () => [
+		"p": () => [
 			sprite("ghosty"),
 			area(),
 			scale(1.1),
