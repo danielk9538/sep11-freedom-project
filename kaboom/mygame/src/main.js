@@ -13,16 +13,16 @@ const k = kaboom()
 k.loadSprite("player", "sprites/spritesheet.png", {
     sliceX: 7,
     sliceY: 1,
-    // anims: {
-    //     run: {
-    //         from: 3,
-    //         to: 4,
-    //         loop: true,
-    //     },
-    //     idle: 0,
-    //     "jump-up": 1,
-    //     "jump-down": 0,
-    // },
+    anims: {
+        run: {
+            from: 3,
+            to: 4,
+            loop: true,
+        },
+        idle: 0,
+        "jump-up": 1,
+        "jump-down": 0,
+    },
 });
 k.loadSprite("venus", "/sprites/venus.png");
 k.loadSprite("hedge", "/sprites/hedge.png");
@@ -171,14 +171,14 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	})
 
 
-// 	// Play "run" animation when moving
-// 	if (player.dx() !== 0) {
-// 		player.play("run");
-// 	} else {
-// 		// Play "idle" animation when not moving
-// 		player.play("idle");
-// 	}
-// });
+	// Play "run" animation when moving
+	if (player.dx() !== 0) {
+		player.play("run");
+	} else {
+		// Play "idle" animation when not moving
+		player.play("idle");
+	}
+});
 
 
 	player.onBeforePhysicsResolve((collision) => {
