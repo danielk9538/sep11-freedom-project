@@ -228,11 +228,11 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		}
 	})
 
-	player.onBeforePhysicsResolve((collision) => {
-		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
-			collision.preventResolution()
-		}
-	})
+	// player.onBeforePhysicsResolve((collision) => {
+	// 	if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
+	// 		collision.preventResolution()
+	// 	}
+	// })
 
 	player.onPhysicsResolve(() => {
 		// Set the viewport center to player.pos
@@ -275,34 +275,11 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyDown("left", moveLeft);
 	onKeyDown("a", moveLeft);
 
-	// let currentSprite = "player";
-
-	// function switchSprite() {
-	// 	if (currentSprite === "player") {
-	// 		currentSprite = "right1";
-	// 		player.use(currentSprite);
-	// 	} else {
-	// 		currentSprite = "player";
-	// 		player.use(currentSprite);
-	// 	}
-	// }
-
-	// onKeyDown("right", () => {
-	// 	switchSprite();
-	// });
-
-	// onKeyRelease("right", () => {
-	// 	switchSprite();
-	// });
-
 	function moveRight() {
 		player.move(MOVE_SPEED, 0);
 	}
 	onKeyDown("right", moveRight);
 	onKeyDown("d", moveRight);
-
-
-
 
 	onGamepadButtonPress("south", jump)
 
@@ -313,7 +290,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyPress("f", () => {
 		setFullscreen(!isFullscreen())
 	})
-
 })
 
 k.scene("death", () => {
