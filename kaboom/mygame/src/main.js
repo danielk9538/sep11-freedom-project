@@ -180,13 +180,16 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 	loadSprite("player", "sprites/spritesheet.png", {
 		sliceX: 2,
-		sliceX: ,
-	}
-
-
-
-
-
+		sliceX: 5,
+		anims: {
+		run: {
+			from: 3,
+			to: 4,
+			loop: true,
+		},
+		"jump-up": 1,
+		"jump-down": 0,
+	},
 	)
 
 	// action() runs every frame
