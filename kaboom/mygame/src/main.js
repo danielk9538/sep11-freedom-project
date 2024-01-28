@@ -12,6 +12,20 @@ k.loadSprite("venus", "/sprites/venus.png");
 k.loadSprite("hedge", "/sprites/hedge.png");
 k.loadSprite("acid", "/sprites/acid.png");
 k.loadSound("hit", "/examples/sounds/hit.mp3");
+k.loadSprite("player", "sprites/spritesheet.png", {
+    sliceX: 7,
+    sliceY: 1,
+    anims: {
+        run: {
+            from: 3,
+            to: 4,
+            loop: true,
+        },
+        idle: 0,
+        "jump-up": 1,
+        "jump-down": 0,
+    },
+});
 
 k.setBackground([40, 180, 99]);
 
@@ -79,21 +93,6 @@ const LEVELS = [
 		"===================================================================================================",
 	],
 ]
-
-k.loadSprite("player", "sprites/spritesheet.png", {
-    sliceX: 7,
-    sliceY: 1,
-    anims: {
-        run: {
-            from: 3,
-            to: 4,
-            loop: true,
-        },
-        idle: 0,
-        "jump-up": 1,
-        "jump-down": 0,
-    },
-});
 
 // define what each symbol means in the level graph
 const levelConf = {
