@@ -1,7 +1,5 @@
 import kaboom from "kaboom"
 
-
-
 const k = kaboom()
 
 // loadSprite("player", "sprites/player1.png")
