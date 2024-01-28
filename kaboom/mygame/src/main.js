@@ -272,21 +272,15 @@ const levelConf = {
 }
 
 scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+    const level = addLevel(LEVELS[levelId ?? 0], levelConf);
+    const player = createPlayer();
 
-	// add level to scene
-	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
-	//gets the player rules from levels area
-	const player = level.get("player")[0]
-
-	// action() runs every frame
-	player.onUpdate(() => {
-		// center camera to player
-		camPos(player.pos)
-		// check fall death
-		if (player.pos.y >= FALL_DEATH) {
-			go("death")
-		}
-	})
+    player.onUpdate(() => {
+        camPos(player.pos);
+        if (player.pos.y >= FALL_DEATH) {
+            go("death");
+        }
+    });
 
 	player.onBeforePhysicsResolve((collision) => {
 		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
