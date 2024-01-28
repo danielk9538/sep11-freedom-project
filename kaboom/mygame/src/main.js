@@ -215,8 +215,16 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	// add level to scene
 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 	//gets the player rules from levels area
-	const player = level.get("player")[0]
-
+	// const player = level.get("player")[0]
+	const player = k.add([
+		sprite("player"),
+		pos(12, 12),
+		area(),
+		scale(1),
+		body(),
+		anchor("bot"),
+		"player",
+	]);
 	// action() runs every frame
 	player.onUpdate(() => {
 		// center camera to player
@@ -274,16 +282,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyDown("left", moveLeft);
 	onKeyDown("a", moveLeft);
 
-	const player = k.add([
-		sprite("player"),
-		pos(12, 12),
-		area(),
-		scale(1),
-		body(),
-		anchor("bot"),
-		"player",
-	]);
-	
 	let currentSprite = "player";
 
 	function switchSprite() {
