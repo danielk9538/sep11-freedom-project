@@ -12,7 +12,7 @@ const k = kaboom()
 // loadSprite("walkR", "sprites/moverightspritesheet.png")
 k.loadSprite("player", "sprites/spritesheet.png", {
     sliceX: 7,  // Adjusted for 7 sprites horizontally
-    sliceY: 5,
+    sliceY: 1,
     anims: {
         run: {
             from: 3,
