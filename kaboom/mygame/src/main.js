@@ -334,11 +334,48 @@ player.onCollide("danger2", (p, danger2) => {
 	onKeyPress("up", jump)
 	onKeyPress("w", jump)
 
+	// function moveLeft() {
+	// 	player.move(-MOVE_SPEED, 0);
+	// }
+	// onKeyDown("left", moveLeft);
+	// onKeyDown("a", moveLeft);
+
 	function moveLeft() {
 		player.move(-MOVE_SPEED, 0);
+
+		// Check if the sprite entity exists, if not, create it
+		if (!has("leftArrowSprite")) {
+			const leftArrowSprite = add([
+				sprite("leftArrowSprite"),
+				pos(player.pos.x - 20, player.pos.y - 20),
+				layer("ui"),
+				{
+					duration: 0.5, // Set the duration for how long the sprite should be visible
+				},
+			]);
+
+			// Add a timer to remove the sprite after the specified duration
+			wait(leftArrowSprite.duration, () => {
+				destroy(leftArrowSprite);
+			});
+		}
 	}
+
+	function stopMovingLeft() {
+		player.move(0, 0);
+
+		// Remove the sprite when the key is released
+		destroy(get("leftArrowSprite")[0]);
+	}
+
 	onKeyDown("left", moveLeft);
 	onKeyDown("a", moveLeft);
+
+	onKeyRelease("left", stopMovingLeft);
+	onKeyRelease("a", stopMovingLeft);
+
+
+	
 
 	function moveRight() {
 		player.move(MOVE_SPEED, 0);
