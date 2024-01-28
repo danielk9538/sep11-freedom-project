@@ -1,7 +1,3 @@
-import kaboom from "kaboom"
-
-const k = kaboom()
-
 kaboom({
 	width: 1280,
 	height: 720,
@@ -38,7 +34,7 @@ setGravity(2500)
 
 const SPEED = 320
 
-k.add([
+add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
 ])
@@ -290,7 +286,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		}
 	}
 
-	k.onKeyDown("right", () => {
+	onKeyDown("right", () => {
 		switchSprite();
 	});
 
@@ -319,8 +315,8 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 })
 
-k.scene("death", () => {
-	k.add([
+scene("death", () => {
+	add([
 		text("You Died"),
 		pos(center()),
 	])
