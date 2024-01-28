@@ -334,16 +334,21 @@ player.onCollide("danger2", (p, danger2) => {
 	onKeyPress("up", jump)
 	onKeyPress("w", jump)
 
-	onKeyDown("left" || "a", () => {
-		player.move(-MOVE_SPEED, 0)
-	})
+	function moveLeft() {
+		player.move(-MOVE_SPEED, 0);
+	}
+	onKeyDown("left", moveLeft);
+	onKeyDown("a", moveLeft);
 
-	onKeyDown("right", () => {
-		player.move(MOVE_SPEED, 0)
-	})
-	onKeyDown("d", () => {
-		player.move(MOVE_SPEED, 0)
-	})
+	function moveRight() {
+		player.move(MOVE_SPEED, 0);
+	}
+	onKeyDown("right", moveRight);
+	onKeyDown("d", moveRight);
+
+	function moveLeft() {
+		player.move(-MOVE_SPEED, 0);
+	}
 
 	onKeyPress("down", () => {
 		player.weight = 3
