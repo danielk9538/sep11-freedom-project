@@ -279,11 +279,35 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyDown("left", moveLeft);
 	onKeyDown("a", moveLeft);
 
+
+	let currentSprite = "sprite1";
+
+	function switchSprite() {
+		if (currentSprite === "player") {
+			currentSprite = "right1";
+			player.use(currentSprite);
+		} else {
+			currentSprite = "right1";
+			player.use(currentSprite);
+		}
+	}
+
+	k.onKeyDown("right", () => {
+		switchSprite();
+	});
+
+	k.onKeyRelease("right", () => {
+		switchSprite();
+	});
+
 	function moveRight() {
 		player.move(MOVE_SPEED, 0);
 	}
 	onKeyDown("right", moveRight);
 	onKeyDown("d", moveRight);
+
+
+
 
 	onGamepadButtonPress("south", jump)
 
