@@ -294,7 +294,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		play("hit")
 	})
 
-		player.collides("danger2", (p, ]) => {
+		player.collides("danger2", (p, enemy) => {
 			// Calculate knockback direction
 			const knockbackDirection = p.pos.sub(enemy.pos).unit();
 
