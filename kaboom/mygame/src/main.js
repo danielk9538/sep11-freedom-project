@@ -96,37 +96,6 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"platform",
 		],
-
-		"-": () => [
-			sprite("steel"),
-			area(),
-			body({ isStatic: true }),
-			offscreen({ hide: true }),
-			anchor("bot"),
-		],
-		"0": () => [
-			sprite("bag"),
-			area(),
-			body({ isStatic: true }),
-			offscreen({ hide: true }),
-			anchor("bot"),
-		],
-		"$": () => [
-			sprite("coin"),
-			area(),
-			pos(0, -9),
-			anchor("bot"),
-			offscreen({ hide: true }),
-			"coin",
-		],
-		"%": () => [
-			sprite("prize"),
-			area(),
-			body({ isStatic: true }),
-			anchor("bot"),
-			offscreen({ hide: true }),
-			"prize",
-		],
 		"^": () => [
 			sprite("venus"),
 			area(),
