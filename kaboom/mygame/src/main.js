@@ -293,7 +293,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		go("death")
 		play("hit")
 	})
-
+	// if player onCollide with any obj with "danger2" tag, player receives knockback
 	player.onCollide("danger2", (p, enemy) => {
 		// Calculate knockback direction
 		const knockbackDirection = player.pos.sub(enemy.pos).unit();
