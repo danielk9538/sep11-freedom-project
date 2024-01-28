@@ -11,7 +11,7 @@ const k = kaboom()
 // loadSprite("walkL", "sprites/moveleftspritesheet.png")
 // loadSprite("walkR", "sprites/moverightspritesheet.png")
 k.loadSprite("player", "sprites/spritesheet.png", {
-    sliceX: 7,  // Adjusted for 7 sprites horizontally
+    sliceX: 7,
     sliceY: 1,
     anims: {
         run: {
@@ -19,6 +19,7 @@ k.loadSprite("player", "sprites/spritesheet.png", {
             to: 4,
             loop: true,
         },
+        idle: 0,
         "jump-up": 1,
         "jump-down": 0,
     },
@@ -32,10 +33,10 @@ k.setBackground([40, 180, 99]);
 
 setGravity(2500)
 
-k.add([
-	text("Press arrow keys & WASD", { width: width() / 2 }),
-	pos(12, 12),
-])
+// k.add([
+// 	text("Press arrow keys & WASD", { width: width() / 2 }),
+// 	pos(12, 12),
+// ])
 
 // define some constants
 const JUMP_FORCE = 1000
@@ -230,7 +231,6 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyPress("f", () => {
 		setFullscreen(!isFullscreen())
 	})
-})
 
 k.scene("death", () => {
 	k.add([
