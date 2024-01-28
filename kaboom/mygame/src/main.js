@@ -12,22 +12,10 @@ loadSprite("player4", "sprites/player5.png")
 loadSprite("player5", "sprites/player6.png")
 loadSprite("player6", "sprites/player7.png")
 loadSprite("player7", "sprites/player8.png")
-loadSprite("bag", "/sprites/bag.png")
-loadSprite("ghosty", "/sprites/ghosty.png")
 loadSprite("venus", "/sprites/venus.png")
-loadSprite("grass", "/sprites/grass.png")
 loadSprite("hedge", "/sprites/hedge.png")
-loadSprite("steel", "/sprites/steel.png")
-loadSprite("prize", "/sprites/jumpy.png")
-loadSprite("apple", "/sprites/apple.png")
-loadSprite("portal", "/sprites/portal.png")
-loadSprite("coin", "/sprites/coin.png")
 loadSprite("acid", "/sprites/acid.png")
-loadSound("coin", "/examples/sounds/score.mp3")
-loadSound("powerup", "/examples/sounds/powerup.mp3")
-loadSound("blip", "/examples/sounds/blip.mp3")
 loadSound("hit", "/examples/sounds/hit.mp3")
-loadSound("portal", "/examples/sounds/portal.mp3")
 
 setBackground([40, 180, 99]);
 
@@ -241,18 +229,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	player.onCollide("danger", () => {
 		go("death")
 		play("hit")
-	})
-
-	player.onCollide("portal", () => {
-		play("portal")
-		if (levelId + 1 < LEVELS.length) {
-			go("game", {
-				levelId: levelId + 1,
-				coins: coins,
-			})
-		} else {
-			go("win")
-		}
 	})
 
 	function jump() {
