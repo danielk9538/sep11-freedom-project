@@ -327,77 +327,35 @@ player.onCollide("danger2", (p, danger2) => {
 		}
 	})
 
-	// ... (your existing code)
 
-
-
-// Add walk animation frames
-const walkFramesLeft = ["player3", "player4"];
-const walkFramesRight = ["player6", "player7"];
-
-// Define walk animation speed (frames per second)
-const walkAnimationSpeed = 8;
-
-// Play walk animation when moving left
-player.action(() => {
-    if (player.move.x < 0) {
-        player.frame = walkFramesLeft[Math.floor(player.pos.x / 10) % walkFramesLeft.length];
-        player.play(walkAnimationSpeed);
-    }
-});
-
-// Play walk animation when moving right
-player.action(() => {
-    if (player.move.x > 0) {
-        player.frame = walkFramesRight[Math.floor(player.pos.x / 10) % walkFramesRight.length];
-        player.play(walkAnimationSpeed);
-    }
-});
-
-// Set idle frame when not moving
-player.action(() => {
-    if (player.move.x === 0) {
-        player.frame = 0; // Assuming the first frame is the idle state in the "player" sprite
-        player.play(1); // Play at the default animation speed
-    }
-});
-
-// ... (your existing code)
 
 
 	function jump() {
-		// these 2 functions are provided by body() component
-		if (player.isGrounded()) {
-			player.jump(JUMP_FORCE)
-		}
-	}
+        if (player.isGrounded()) {
+            player.jump(JUMP_FORCE);
+        }
+    }
 
-	// jump with space
-	onKeyPress("space", jump)
-	onKeyPress("up", jump)
-	onKeyPress("w", jump)
+    function moveLeft() {
+        player.move(-MOVE_SPEED, 0);
+    }
 
-	function moveLeft() {
-		player.move(-MOVE_SPEED, 0);
-	}
-	onKeyDown("left", moveLeft);
-	onKeyDown("a", moveLeft);
+    function moveRight() {
+        player.move(MOVE_SPEED, 0);
+    }
 
+    onKeyDown("left", moveLeft);
+    onKeyDown("a", moveLeft);
+    onKeyDown("right", moveRight);
+    onKeyDown("d", moveRight);
+    onKeyPress("space", jump);
+    onKeyPress("up", jump);
+    onKeyPress("w", jump);
 
-
-
-	function moveRight() {
-		player.move(MOVE_SPEED, 0);
-		add("player3")
-	}
-	onKeyDown("right", moveRight);
-	onKeyDown("d", moveRight);
-
-	onGamepadButtonPress("south", jump)
-
-	onGamepadStick("left", (v) => {
-		player.move(v.x * MOVE_SPEED, 0)
-	})
+	onGamepadButtonPress("south", jump);
+    onGamepadStick("left", (v) => {
+        player.move(v.x * MOVE_SPEED, 0);
+    });
 
 	onKeyPress("f", () => {
 		setFullscreen(!isFullscreen())
