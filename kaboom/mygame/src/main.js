@@ -344,9 +344,9 @@ player.onCollide("danger2", (p, danger2) => {
 		player.move(-MOVE_SPEED, 0);
 
 		// Check if the sprite entity exists, if not, create it
-		if (!has("leftArrowSprite")) {
+		if (!has("player3")) {
 			const leftArrowSprite = add([
-				sprite("leftArrowSprite"),
+				sprite("player3"),
 				pos(player.pos.x - 20, player.pos.y - 20),
 				layer("ui"),
 				{
@@ -375,7 +375,7 @@ player.onCollide("danger2", (p, danger2) => {
 	onKeyRelease("a", stopMovingLeft);
 
 
-	
+
 
 	function moveRight() {
 		player.move(MOVE_SPEED, 0);
