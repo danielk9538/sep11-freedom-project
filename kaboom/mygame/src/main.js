@@ -294,16 +294,13 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		play("hit")
 	})
 	// if player onCollide with any obj with "danger2" tag, player receives knockback
-	player.onCollide("danger2", (p) => {
-		// Calculate knockback direction
-		const knockbackDirection = player.pos.sub(p.pos).unit();
+	player.onCollide("danger2", () => {
+		const knockbackDirection = player.pos.sub("danger2".pos).unit();
+		const knockbackForce = 5000;
 
-		// Apply knockback force
-		const knockbackForce = 12000;
-
-		// Set player's velocity to the knockback direction multiplied by the force
+		// Apply knockback force by adjusting player's velocity
 		player.move(knockbackDirection.scale(knockbackForce));
-	});
+	  });
 
 
 	player.onCollide("portal", () => {
