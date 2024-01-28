@@ -344,9 +344,9 @@ player.onCollide("danger2", (p, danger2) => {
 		player.move(-MOVE_SPEED, 0);
 
 		// Check if the sprite entity exists, if not, create it
-		if (!has("player3")) {
+		if (!has("leftArrowSprite")) {
 			const leftArrowSprite = add([
-				sprite("player3"),
+				sprite("player3"), // Use the "player3" sprite for the walk animation
 				pos(player.pos.x - 20, player.pos.y - 20),
 				layer("ui"),
 				{
@@ -373,6 +373,7 @@ player.onCollide("danger2", (p, danger2) => {
 
 	onKeyRelease("left", stopMovingLeft);
 	onKeyRelease("a", stopMovingLeft);
+
 
 
 
