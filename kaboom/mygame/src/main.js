@@ -1,6 +1,7 @@
 kaboom({
-	width: 1280,
-	height: 720
+	center
+	width: 1920,
+	height: 1080
 })
 
 loadSprite("player", "sprites/player1.png")
