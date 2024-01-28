@@ -190,7 +190,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		"jump-up": 1,
 		"jump-down": 0,
 	},
-	)
+})
 
 	// action() runs every frame
 	player.onUpdate(() => {
