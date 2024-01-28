@@ -2,6 +2,11 @@ import kaboom from "kaboom"
 
 const k = kaboom()
 
+kaboom({
+	width: 1280,
+	height: 720,
+})
+
 k.loadSprite("player", "sprites/player1.png")
 k.loadSprite("player1", "sprites/player2.png")
 k.loadSprite("player2", "sprites/player3.png")
@@ -189,14 +194,14 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"portal",
 		],
-		// "&": () => [
-		// 	sprite("player"),
-		// 	area(),
-		// 	scale(1),
-		// 	body(),
-		// 	anchor("bot"),
-		// 	"player",
-		// ],
+		"&": () => [
+			sprite("player"),
+			area(),
+			scale(1),
+			body(),
+			anchor("bot"),
+			"player",
+		],
 		">": () => [
 			sprite("acid"),
 			area(),
@@ -215,16 +220,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	// add level to scene
 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 	//gets the player rules from levels area
-	// const player = level.get("player")[0]
-	const player = k.add([
-		sprite("player"),
-		pos(12, 12),
-		area(),
-		scale(1),
-		body(),
-		anchor("bot"),
-		"player",
-	]);
+	const player = level.get("player")[0]
 	// action() runs every frame
 	player.onUpdate(() => {
 		// center camera to player
