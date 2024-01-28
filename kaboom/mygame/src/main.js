@@ -297,10 +297,12 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 player.onCollide("danger2", (p, danger2) => {
     // Calculate knockback direction
     const knockbackDirection = p.pos.sub(danger2.pos).unit();
+
     // Apply knockback force
-    const knockbackForce = 1000;
-    // Set player's velocity to the knockback direction multiplied by the force
-    p.move(knockbackDirection.scale(knockbackForce));
+    const knockbackForce = 5000;
+
+    // Update player's velocity to simulate knockback
+    p.move(knockbackDirection.scale(knockbackForce / p.body.mass));
 });
 
 
