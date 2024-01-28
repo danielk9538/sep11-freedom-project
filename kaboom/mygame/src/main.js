@@ -32,7 +32,7 @@ loadSound("blip", "/examples/sounds/blip.mp3")
 loadSound("hit", "/examples/sounds/hit.mp3")
 loadSound("portal", "/examples/sounds/portal.mp3")
 
-k.setBackground([40, 180, 99]);
+setBackground([40, 180, 99]);
 
 setGravity(2500)
 
