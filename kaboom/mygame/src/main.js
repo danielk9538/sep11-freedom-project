@@ -364,11 +364,13 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
     }
   });
 
-  if (player.dx() !== 0) {
-    player.play("run");
-  } else {
-    player.play("idle");
-  }
+    // Check player's direction and play the appropriate animation
+    if (player.dir.x !== 0) {
+		player.play("run");
+	  } else {
+		player.play("idle");
+	  }
+	});
 
   player.onBeforePhysicsResolve((collision) => {
     if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
@@ -418,7 +420,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
   onKeyPress("f", () => {
     setFullscreen(!isFullscreen());
   });
-});
+
 
 k.scene("death", () => {
   k.add([text("You Died"), pos(center())]);
