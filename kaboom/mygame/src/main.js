@@ -8,20 +8,6 @@ const k = kaboom()
 // loadSprite("lookL", "sprites/player6.png")
 // loadSprite("walkL", "sprites/moveleftspritesheet.png")
 // loadSprite("walkR", "sprites/moverightspritesheet.png")
-k.loadSprite("player", "sprites/spritesheet.png", {
-    sliceX: 7,
-    sliceY: 1,
-    anims: {
-        run: {
-            from: 3,
-            to: 4,
-            loop: true,
-        },
-        idle: 0,
-        "jump-up": 1,
-        "jump-down": 0,
-    },
-});
 k.loadSprite("venus", "/sprites/venus.png");
 k.loadSprite("hedge", "/sprites/hedge.png");
 k.loadSprite("acid", "/sprites/acid.png");
@@ -34,7 +20,6 @@ setGravity(2500)
 k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
-	
 ])
 
 // define some constants
@@ -94,6 +79,21 @@ const LEVELS = [
 		"===================================================================================================",
 	],
 ]
+
+k.loadSprite("player", "sprites/spritesheet.png", {
+    sliceX: 7,
+    sliceY: 1,
+    anims: {
+        run: {
+            from: 3,
+            to: 4,
+            loop: true,
+        },
+        idle: 0,
+        "jump-up": 1,
+        "jump-down": 0,
+    },
+});
 
 // define what each symbol means in the level graph
 const levelConf = {
