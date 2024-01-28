@@ -300,8 +300,11 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 		// Apply knockback force
 		const knockbackForce = 300;
-		p.applyForce(knockbackDirection.scale(knockbackForce));
+
+		// Set player's velocity to the knockback direction multiplied by the force
+		p.move(knockbackDirection.scale(knockbackForce));
 	});
+
 
 	player.onCollide("portal", () => {
 		play("portal")
