@@ -150,25 +150,22 @@ const levelConf = {
 let player;
 
 k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+    // add level to scene
+    const level = addLevel(LEVELS[levelId ?? 0], levelConf);
 
-	// add level to scene
-	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
+    // gets the player rules from levels area
+    player = level.get("player")[0];  // Assign the player instance to the global variable
 
-	//gets the player rules from levels area
-	// const player = level.get("player")[0]
+    // action() runs every frame
+    player.onUpdate(() => {
+        // center camera to player
+        camPos(player.pos);
 
-	// action() runs every frame
-	player.onUpdate(() => {
-
-		// center camera to player
-		camPos(player.pos)
-
-		// check fall death
-		if (player.pos.y >= FALL_DEATH) {
-			go("death")
-		}
-	})
-
+        // check fall death
+        if (player.pos.y >= FALL_DEATH) {
+            go("death");
+        }
+    });
 
     // Play "run" animation when moving
     if (player.dx() !== 0) {
