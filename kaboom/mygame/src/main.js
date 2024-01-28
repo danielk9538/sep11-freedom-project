@@ -1,4 +1,10 @@
-kaboom()
+import kaboom from "../libs/kaboom.mjs"
+
+kaboom({
+	width: 1280,
+	height: 720,
+	letterbox: true
+})
 
 loadSprite("player", "sprites/player1.png")
 loadSprite("player1", "sprites/player2.png")
