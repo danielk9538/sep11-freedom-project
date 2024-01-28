@@ -148,7 +148,7 @@ const levelConf = {
 	},
 }
 
-k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+k.scene("game",({ levelId} = { levelId: 0}) => {
 
 	// add level to scene
 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
