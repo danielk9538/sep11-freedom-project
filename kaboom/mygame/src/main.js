@@ -4,12 +4,12 @@ const k = kaboom()
 
 k.loadSprite("player", "sprites/player1.png")
 k.loadSprite("player1", "sprites/player2.png")
-k.loadSprite("left1", "sprites/left1.png")
-k.loadSprite("left2", "sprites/left2.png")
+k.loadSprite("player2", "sprites/player3.png")
+k.loadSprite("player3", "sprites/player4.png")
 k.loadSprite("player4", "sprites/player5.png")
 k.loadSprite("player5", "sprites/player6.png")
-k.loadSprite("right1", "sprites/right1.png")
-k.loadSprite("right2", "sprites/right2.png")
+k.loadSprite("player6", "sprites/player7.png")
+k.loadSprite("player7", "sprites/player8.png")
 k.loadSprite("bag", "/sprites/bag.png")
 k.loadSprite("ghosty", "/sprites/ghosty.png")
 k.loadSprite("venus", "/sprites/venus.png")
@@ -38,35 +38,6 @@ k.add([
 	pos(12, 12),
 ])
 
-const walkFramesLeft = ["player3", "player4"];
-const walkFramesRight = ["player6", "player7"];
-
-function createPlayer() {
-    const player = add([
-        sprite("player"),
-        pos(12, 12), // Set the initial position here
-        area(),
-        scale(1),
-        body(),
-        anchor("bot"),
-        "player",
-    ]);
-
-    player.update(() => {
-        if (player.move.x < 0) {
-            player.frame = walkFramesLeft[Math.floor(player.pos.x / 10) % walkFramesLeft.length];
-            player.play(1, true); // Reverse the animation when moving left
-        } else if (player.move.x > 0) {
-            player.frame = walkFramesRight[Math.floor(player.pos.x / 10) % walkFramesRight.length];
-            player.play(1);
-        } else {
-            player.play("player");
-        }
-    });
-
-    return player;
-}
-
 // define some constants
 const JUMP_FORCE = 1000
 const MOVE_SPEED = 480
@@ -79,7 +50,7 @@ const LEVELS = [
 		"= = < = =                                                                                         =",
 		"= <   < =                                                                                         =",
 		"=       >=                                                                                        =",
-		"==       >=                                                                                       =",
+		"==  &    >=                                                                                       =",
 		"=   ===>  >========================================================================================",
 		"=  =====>    =                                     =    <  <  <  <  <  <   =     =            =   =",
 		"=   =  ==>   =                                     =                       =     =                =",
@@ -123,39 +94,6 @@ const LEVELS = [
 		"=          ===       ^====                                                                        =",
 		"===================================================================================================",
 	],
-	// [
-	// 	"    0       ",
-	// 	"   --       ",
-	// 	"       $$   ",
-	// 	" %    ===   ",
-	// 	"            ",
-	// 	"   ^^  > = @",
-	// 	"============",
-	// ],
-	// [
-	// 	"                          $",
-	// 	"                          $",
-	// 	"                          $",
-	// 	"                          $",
-	// 	"                          $",
-	// 	"           $$         =   $",
-	// 	"  %      ====         =   $",
-	// 	"                      =   $",
-	// 	"                      =    ",
-	// 	"       ^^      = >    =   @",
-	// 	"===========================",
-	// ],
-	// [
-	// 	"     $    $    $    $     $",
-	// 	"%    $    $    $    $     $",
-	// 	"                           ",
-	// 	"                           ",
-	// 	"                           ",
-	// 	"                           ",
-	// 	"      >   >                ",
-	// 	"  ^^^^=^^^=^^^^>^^^^>^^^^^@",
-	// 	"===========================",
-	// ],
 ]
 
 // define what each symbol means in the level graph
@@ -273,15 +211,21 @@ const levelConf = {
 }
 
 scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
-    const level = addLevel(LEVELS[levelId ?? 0], levelConf);
-    const player = createPlayer();
 
-    player.onUpdate(() => {
-        camPos(player.pos);
-        if (player.pos.y >= FALL_DEATH) {
-            go("death");
-        }
-    });
+	// add level to scene
+	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
+	//gets the player rules from levels area
+	const player = level.get("player")[0]
+
+	// action() runs every frame
+	player.onUpdate(() => {
+		// center camera to player
+		camPos(player.pos)
+		// check fall death
+		if (player.pos.y >= FALL_DEATH) {
+			go("death")
+		}
+	})
 
 	player.onBeforePhysicsResolve((collision) => {
 		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
@@ -328,35 +272,36 @@ player.onCollide("danger2", (p, danger2) => {
 		}
 	})
 
-
-
-
 	function jump() {
-        if (player.isGrounded()) {
-            player.jump(JUMP_FORCE);
-        }
-    }
+		// these 2 functions are provided by body() component
+		if (player.isGrounded()) {
+			player.jump(JUMP_FORCE)
+		}
+	}
 
-    function moveLeft() {
-        player.move(-MOVE_SPEED, 0);
-    }
+	// jump with space
+	onKeyPress("space", jump)
+	onKeyPress("up", jump)
+	onKeyPress("w", jump)
 
-    function moveRight() {
-        player.move(MOVE_SPEED, 0);
-    }
+	function moveLeft() {
+		player.move(-MOVE_SPEED, 0);
+	}
+	onKeyDown("left", moveLeft);
+	onKeyDown("a", moveLeft);
 
-    onKeyDown("left", moveLeft);
-    onKeyDown("a", moveLeft);
-    onKeyDown("right", moveRight);
-    onKeyDown("d", moveRight);
-    onKeyPress("space", jump);
-    onKeyPress("up", jump);
-    onKeyPress("w", jump);
+	function moveRight() {
+		player.move(MOVE_SPEED, 0);
+		add("right1")
+	}
+	onKeyDown("right", moveRight);
+	onKeyDown("d", moveRight);
 
-	onGamepadButtonPress("south", jump);
-    onGamepadStick("left", (v) => {
-        player.move(v.x * MOVE_SPEED, 0);
-    });
+	onGamepadButtonPress("south", jump)
+
+	onGamepadStick("left", (v) => {
+		player.move(v.x * MOVE_SPEED, 0)
+	})
 
 	onKeyPress("f", () => {
 		setFullscreen(!isFullscreen())
