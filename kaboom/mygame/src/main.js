@@ -334,10 +334,7 @@ player.onCollide("danger2", (p, danger2) => {
 	onKeyPress("up", jump)
 	onKeyPress("w", jump)
 
-	onKeyDown("left", () => {
-		player.move(-MOVE_SPEED, 0)
-	})
-	onKeyDown("a", () => {
+	onKeyDown("left" || "a", () => {
 		player.move(-MOVE_SPEED, 0)
 	})
 
