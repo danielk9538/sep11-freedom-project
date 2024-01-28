@@ -189,14 +189,14 @@ const levelConf = {
 			offscreen({ hide: true }),
 			"portal",
 		],
-		"&": () => [
-			sprite("player"),
-			area(),
-			scale(1),
-			body(),
-			anchor("bot"),
-			"player",
-		],
+		// "&": () => [
+		// 	sprite("player"),
+		// 	area(),
+		// 	scale(1),
+		// 	body(),
+		// 	anchor("bot"),
+		// 	"player",
+		// ],
 		">": () => [
 			sprite("acid"),
 			area(),
@@ -244,11 +244,6 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		play("hit")
 	})
 
-
-
-
-
-
 	player.onCollide("portal", () => {
 		play("portal")
 		if (levelId + 1 < LEVELS.length) {
@@ -279,7 +274,16 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyDown("left", moveLeft);
 	onKeyDown("a", moveLeft);
 
-
+	const player = k.add([
+		sprite("player"),
+		pos(12, 12),
+		area(),
+		scale(1),
+		body(),
+		anchor("bot"),
+		"player",
+	]);
+	
 	let currentSprite = "player";
 
 	function switchSprite() {
