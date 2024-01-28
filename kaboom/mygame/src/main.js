@@ -8,20 +8,7 @@ const k = kaboom()
 // loadSprite("lookL", "sprites/player6.png")
 // loadSprite("walkL", "sprites/moveleftspritesheet.png")
 // loadSprite("walkR", "sprites/moverightspritesheet.png")
-k.loadSprite("player", "sprites/spritesheet.png", {
-    sliceX: 7,
-    sliceY: 1,
-    anims: {
-        run: {
-            from: 3,
-            to: 4,
-            loop: true,
-        },
-        idle: 0,
-        "jump-up": 1,
-        "jump-down": 0,
-    },
-});
+k.loadSprite("player", "sprites/spritesheet.png",)
 k.loadSprite("venus", "/sprites/venus.png");
 k.loadSprite("hedge", "/sprites/hedge.png");
 k.loadSprite("acid", "/sprites/acid.png");
@@ -147,7 +134,6 @@ const levelConf = {
 	},
 }
 
-let player;
 
 k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
     // add level to scene
@@ -167,13 +153,13 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
         }
     });
 
-    // Play "run" animation when moving
-    if (player.dx() !== 0) {
-        player.play("run");
-    } else {
-        // Play "idle" animation when not moving
-        player.play("idle");
-    }
+    // // Play "run" animation when moving
+    // if (player.dx() !== 0) {
+    //     player.play("run");
+    // } else {
+    //     // Play "idle" animation when not moving
+    //     player.play("idle");
+    // }
 
 	player.onBeforePhysicsResolve((collision) => {
 		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
