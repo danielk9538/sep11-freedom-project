@@ -194,6 +194,7 @@ const levelConf = {
 			body(),
 			anchor("bot"),
 			"player",
+			fixed(),
 		],
 		">": () => [
 			sprite("acid"),
