@@ -33,8 +33,6 @@ setBackground([40, 180, 99]);
 
 setGravity(2500)
 
-const SPEED = 320
-
 k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
