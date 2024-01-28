@@ -150,7 +150,7 @@ const levelConf = {
 			// fixed(),
 		],
 		"&": () => [
-			sprite("player"),
+			sprite("player", {anim: "idle" }),
 			area(),
 			scale(1),
 			body(),
