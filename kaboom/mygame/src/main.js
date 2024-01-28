@@ -304,7 +304,7 @@ player.onCollide("danger2", (p, danger2) => {
     const knockbackForce = 5000;
 
     // Update player's velocity to simulate knockback
-    p.move(knockbackDirection.scale(knockbackForce / p.body()._m));
+    p.move(knockbackDirection.scale(knockbackForce / 60)); // Adjust the division factor as needed
 });
 
 
