@@ -44,6 +44,7 @@ const walkFramesRight = ["player6", "player7"];
 function createPlayer() {
     const player = add([
         sprite("player"),
+        pos(12, 12), // Set the initial position here
         area(),
         scale(1),
         body(),
@@ -51,7 +52,7 @@ function createPlayer() {
         "player",
     ]);
 
-    player.action(() => {
+    player.update(() => {
         if (player.move.x < 0) {
             player.frame = walkFramesLeft[Math.floor(player.pos.x / 10) % walkFramesLeft.length];
             player.play(1, true); // Reverse the animation when moving left
