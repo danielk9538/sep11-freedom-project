@@ -294,19 +294,14 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		play("hit")
 	})
 
-		player.collides("danger2", (p, enemy) => {
-			// Calculate knockback direction
-			const knockbackDirection = p.pos.sub(enemy.pos).unit();
+	player.onCollide("danger2", (p, enemy) => {
+		// Calculate knockback direction
+		const knockbackDirection = p.pos.sub(enemy.pos).unit();
 
-			// Apply knockback force
-			const knockbackForce = 300;
-			p.use(
-			  action((dt) => {
-				p.move(knockbackDirection.scale(knockbackForce * dt));
-			  })
-			);
-		  });
-	})
+		// Apply knockback force
+		const knockbackForce = 300;
+		p.applyForce(knockbackDirection.scale(knockbackForce));
+	});
 
 	player.onCollide("portal", () => {
 		play("portal")
