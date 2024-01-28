@@ -346,24 +346,6 @@ player.onCollide("danger2", (p, danger2) => {
 	onKeyDown("right", moveRight);
 	onKeyDown("d", moveRight);
 
-	function moveLeft() {
-		player.move(-MOVE_SPEED, 0);
-	}
-
-	onKeyPress("down", () => {
-		player.weight = 3
-	})
-	onKeyPress("s", () => {
-		player.weight = 3
-	})
-
-	onKeyRelease("down", () => {
-		player.weight = 1
-	})
-	onKeyRelease("s", () => {
-		player.weight = 1
-	})
-
 	onGamepadButtonPress("south", jump)
 
 	onGamepadStick("left", (v) => {
