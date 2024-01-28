@@ -179,7 +179,8 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	const player = level.get("player")[0]
 
 	loadSprite("player", "sprites/spritesheet.png", {
-		sliceX:
+		sliceX: 2,
+		sliceX: ,
 	}
 
 
