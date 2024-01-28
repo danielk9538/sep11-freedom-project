@@ -155,7 +155,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 
 	//gets the player rules from levels area
-	const player = level.get("player")[0]
+	// const player = level.get("player")[0]
 
 	// action() runs every frame
 	player.onUpdate(() => {
@@ -170,14 +170,13 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	})
 
 
-	// Play "run" animation when moving
-if (player.dx !== 0) {
-    player.play("run");
-} else {
-    // Play "idle" animation when not moving
-    player.play("idle");
-}
-
+    // Play "run" animation when moving
+    if (player.dx() !== 0) {
+        player.play("run");
+    } else {
+        // Play "idle" animation when not moving
+        player.play("idle");
+    }
 
 	player.onBeforePhysicsResolve((collision) => {
 		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
