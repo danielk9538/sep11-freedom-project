@@ -280,14 +280,14 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyDown("a", moveLeft);
 
 
-	let currentSprite = "sprite1";
+	let currentSprite = "player";
 
 	function switchSprite() {
 		if (currentSprite === "player") {
 			currentSprite = "right1";
 			player.use(currentSprite);
 		} else {
-			currentSprite = "right1";
+			currentSprite = "player";
 			player.use(currentSprite);
 		}
 	}
@@ -300,11 +300,11 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		switchSprite();
 	});
 
-	function moveRight() {
-		player.move(MOVE_SPEED, 0);
-	}
-	onKeyDown("right", moveRight);
-	onKeyDown("d", moveRight);
+	// function moveRight() {
+	// 	player.move(MOVE_SPEED, 0);
+	// }
+	// onKeyDown("right", moveRight);
+	// onKeyDown("d", moveRight);
 
 
 
