@@ -148,11 +148,12 @@ const levelConf = {
 	},
 }
 
-k.scene("game",({ levelId} = { levelId: 0}) => {
+k.scene("game", ({ levelIdx, score }) => {
 
 	// add level to scene
-	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
-
+	const level = addLevel(LEVELS[levelIdx || 0], levelConf)
+	pos: vec2(100, 200),
+	tiles: {
 	//gets the player rules from levels area
 	const player = level.get("player")[0]
 
