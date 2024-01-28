@@ -4,18 +4,31 @@ import kaboom from "kaboom"
 
 const k = kaboom()
 
-loadSprite("player", "sprites/player1.png")
-loadSprite("fall", "sprites/player2.png")
-loadSprite("lookR", "sprites/player5.png")
-loadSprite("lookL", "sprites/player6.png")
-loadSprite("walkL", "sprites/moveleftspritesheet.png")
-loadSprite("walkR", "sprites/moverightspritesheet.png")
-loadSprite("venus", "/sprites/venus.png")
-loadSprite("hedge", "/sprites/hedge.png")
-loadSprite("acid", "/sprites/acid.png")
-loadSound("hit", "/examples/sounds/hit.mp3")
+// loadSprite("player", "sprites/player1.png")
+// loadSprite("fall", "sprites/player2.png")
+// loadSprite("lookR", "sprites/player5.png")
+// loadSprite("lookL", "sprites/player6.png")
+// loadSprite("walkL", "sprites/moveleftspritesheet.png")
+// loadSprite("walkR", "sprites/moverightspritesheet.png")
+k.loadSprite("player", "sprites/spritesheet.png", {
+    sliceX: 7,  // Adjusted for 7 sprites horizontally
+    sliceY: 5,
+    anims: {
+        run: {
+            from: 3,
+            to: 4,
+            loop: true,
+        },
+        "jump-up": 1,
+        "jump-down": 0,
+    },
+});
+k.loadSprite("venus", "/sprites/venus.png");
+k.loadSprite("hedge", "/sprites/hedge.png");
+k.loadSprite("acid", "/sprites/acid.png");
+k.loadSound("hit", "/examples/sounds/hit.mp3");
 
-setBackground([40, 180, 99]);
+k.setBackground([40, 180, 99]);
 
 setGravity(2500)
 
@@ -104,7 +117,6 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger",
-			// fixed(),
 		],
 		"<": () => [
 			sprite("venus"),
@@ -116,7 +128,6 @@ const levelConf = {
 			"danger",
 			pos(0, -66),
 			rotate(180),
-			// fixed(),
 		],
 		"&": () => [
 			sprite("player", {anim: "idle" }),
@@ -134,32 +145,17 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger2",
-			// fixed(),
 		]
 	},
 }
 
-scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 	// add level to scene
 	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 
 	//gets the player rules from levels area
 	const player = level.get("player")[0]
-
-	loadSprite("player", "sprites/spritesheet.png", {
-		sliceX: 2,
-		sliceX: 5,
-		anims: {
-		run: {
-			from: 3,
-			to: 4,
-			loop: true,
-		},
-		"jump-up": 1,
-		"jump-down": 0,
-	},
-})
 
 	// action() runs every frame
 	player.onUpdate(() => {
