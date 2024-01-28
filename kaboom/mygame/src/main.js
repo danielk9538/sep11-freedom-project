@@ -293,18 +293,24 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		go("death")
 		play("hit")
 	})
-	// if player onCollide with any obj with "danger2" tag, player receives knockback
-	player.onCollide("danger2", (p, enemy) => {
-		// Calculate knockback direction
-		const knockbackDirection = player.pos.sub(enemy.pos).unit();
+	// // if player onCollide with any obj with "danger2" tag, player receives knockback
+	// player.onCollide("danger2", (p, enemy) => {
+	// 	// Calculate knockback direction
+	// 	const knockbackDirection = player.pos.sub(enemy.pos).unit();
 
-		// Apply knockback force
-		const knockbackForce = 1000;
+	// 	// Apply knockback force
+	// 	const knockbackForce = 1000;
 
-		// Set player's velocity to the knockback direction multiplied by the force
-		player.move(knockbackDirection.scale(knockbackForce));
+	// 	// Set player's velocity to the knockback direction multiplied by the force
+	// 	player.move(knockbackDirection.scale(knockbackForce));
+	// });
+	player.collides("danger2", () => {
+		// Handle the lava collision (e.g., damage the player)
+		// For simplicity, we'll just reset the player's position in this example
+		player.pos.x = 12;
+		player.pos.y = 12;
+	  });
 	});
-
 
 	player.onCollide("portal", () => {
 		play("portal")
