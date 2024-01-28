@@ -347,7 +347,7 @@ player.onCollide("danger2", (p, danger2) => {
 		if (!has("leftArrowSprite")) {
 			const leftArrowSprite = add([
 				sprite("player3"), // Use the "player3" sprite for the walk animation
-				pos(player.pos.x - 20, player.pos.y - 20),
+				// pos(player.pos.x - 20, player.pos.y - 20),
 				layer("ui"),
 				{
 					duration: 0.5, // Set the duration for how long the sprite should be visible
