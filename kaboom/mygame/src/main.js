@@ -1,10 +1,8 @@
-import kaboom from "../libs/kaboom.mjs"
+import kaboom from "kaboom"
 
-kaboom({
-	width: 1280,
-	height: 720,
-	letterbox: true
-})
+
+
+kaboom
 
 loadSprite("player", "sprites/player1.png")
 loadSprite("player1", "sprites/player2.png")
@@ -37,7 +35,7 @@ setGravity(2500)
 
 const SPEED = 320
 
-add([
+k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
 ])
@@ -200,7 +198,6 @@ const levelConf = {
 			body(),
 			anchor("bot"),
 			"player",
-			fixed(),
 		],
 		">": () => [
 			sprite("acid"),
@@ -278,31 +275,31 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyDown("left", moveLeft);
 	onKeyDown("a", moveLeft);
 
-	// let currentSprite = "player";
+	let currentSprite = "player";
 
-	// function switchSprite() {
-	// 	if (currentSprite === "player") {
-	// 		currentSprite = "right1";
-	// 		player.use(currentSprite);
-	// 	} else {
-	// 		currentSprite = "player";
-	// 		player.use(currentSprite);
-	// 	}
-	// }
-
-	// onKeyDown("right", () => {
-	// 	switchSprite();
-	// });
-
-	// onKeyRelease("right", () => {
-	// 	switchSprite();
-	// });
-
-	function moveRight() {
-		player.move(MOVE_SPEED, 0);
+	function switchSprite() {
+		if (currentSprite === "player") {
+			currentSprite = "right1";
+			player.use(currentSprite);
+		} else {
+			currentSprite = "player";
+			player.use(currentSprite);
+		}
 	}
-	onKeyDown("right", moveRight);
-	onKeyDown("d", moveRight);
+
+	k.onKeyDown("right", () => {
+		switchSprite();
+	});
+
+	k.onKeyRelease("right", () => {
+		switchSprite();
+	});
+
+	// function moveRight() {
+	// 	player.move(MOVE_SPEED, 0);
+	// }
+	// onKeyDown("right", moveRight);
+	// onKeyDown("d", moveRight);
 
 
 
@@ -319,7 +316,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 })
 
-scene("death", () => {
+k.scene("death", () => {
 	k.add([
 		text("You Died"),
 		pos(center()),
