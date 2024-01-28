@@ -1,8 +1,4 @@
-kaboom({
-	center
-	width: 1920,
-	height: 1080
-})
+kaboom()
 
 loadSprite("player", "sprites/player1.png")
 loadSprite("player1", "sprites/player2.png")
@@ -28,7 +24,6 @@ loadSound("powerup", "/examples/sounds/powerup.mp3")
 loadSound("blip", "/examples/sounds/blip.mp3")
 loadSound("hit", "/examples/sounds/hit.mp3")
 loadSound("portal", "/examples/sounds/portal.mp3")
-
 
 setBackground([40, 180, 99]);
 
@@ -318,7 +313,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 })
 
 scene("death", () => {
-	add([
+	k.add([
 		text("You Died"),
 		pos(center()),
 	])
