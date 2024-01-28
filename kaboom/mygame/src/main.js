@@ -12,29 +12,15 @@ k.loadSprite("venus", "/sprites/venus.png");
 k.loadSprite("hedge", "/sprites/hedge.png");
 k.loadSprite("acid", "/sprites/acid.png");
 k.loadSound("hit", "/examples/sounds/hit.mp3");
-k.loadSprite("player", "sprites/spritesheet.png", {
-    sliceX: 7,
-    sliceY: 1,
-    anims: {
-        run: {
-            from: 3,
-            to: 4,
-            loop: true,
-        },
-        idle: 0,
-        "jump-up": 1,
-        "jump-down": 0,
-    },
-});
 
-k.setBackground([40, 180, 99]);
+// k.setBackground([40, 180, 99]);
 
 setGravity(2500)
 
-k.add([
-	text("Press arrow keys & WASD", { width: width() / 2 }),
-	pos(12, 12),
-])
+// k.add([
+// 	text("Press arrow keys & WASD", { width: width() / 2 }),
+// 	pos(12, 12),
+// ])
 
 // define some constants
 const JUMP_FORCE = 1000
@@ -148,12 +134,11 @@ const levelConf = {
 	},
 }
 
-k.scene("game", ({ levelIdx, score }) => {
+k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 	// add level to scene
-	const level = addLevel(LEVELS[levelIdx || 0], levelConf)
-	pos: vec2(100, 200),
-	tiles: {
+	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
+
 	//gets the player rules from levels area
 	const player = level.get("player")[0]
 
