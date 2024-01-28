@@ -1,6 +1,6 @@
 kaboom({
 	width: 1280,
-	height: 720,
+	height: 720
 })
 
 loadSprite("player", "sprites/player1.png")
@@ -27,6 +27,7 @@ loadSound("powerup", "/examples/sounds/powerup.mp3")
 loadSound("blip", "/examples/sounds/blip.mp3")
 loadSound("hit", "/examples/sounds/hit.mp3")
 loadSound("portal", "/examples/sounds/portal.mp3")
+
 
 setBackground([40, 180, 99]);
 
@@ -274,31 +275,31 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyDown("left", moveLeft);
 	onKeyDown("a", moveLeft);
 
-	let currentSprite = "player";
+	// let currentSprite = "player";
 
-	function switchSprite() {
-		if (currentSprite === "player") {
-			currentSprite = "right1";
-			player.use(currentSprite);
-		} else {
-			currentSprite = "player";
-			player.use(currentSprite);
-		}
-	}
-
-	onKeyDown("right", () => {
-		switchSprite();
-	});
-
-	k.onKeyRelease("right", () => {
-		switchSprite();
-	});
-
-	// function moveRight() {
-	// 	player.move(MOVE_SPEED, 0);
+	// function switchSprite() {
+	// 	if (currentSprite === "player") {
+	// 		currentSprite = "right1";
+	// 		player.use(currentSprite);
+	// 	} else {
+	// 		currentSprite = "player";
+	// 		player.use(currentSprite);
+	// 	}
 	// }
-	// onKeyDown("right", moveRight);
-	// onKeyDown("d", moveRight);
+
+	// onKeyDown("right", () => {
+	// 	switchSprite();
+	// });
+
+	// onKeyRelease("right", () => {
+	// 	switchSprite();
+	// });
+
+	function moveRight() {
+		player.move(MOVE_SPEED, 0);
+	}
+	onKeyDown("right", moveRight);
+	onKeyDown("d", moveRight);
 
 
 
