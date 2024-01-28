@@ -38,6 +38,34 @@ k.add([
 	pos(12, 12),
 ])
 
+const walkFramesLeft = ["player3", "player4"];
+const walkFramesRight = ["player6", "player7"];
+
+function createPlayer() {
+    const player = add([
+        sprite("player"),
+        area(),
+        scale(1),
+        body(),
+        anchor("bot"),
+        "player",
+    ]);
+
+    player.action(() => {
+        if (player.move.x < 0) {
+            player.frame = walkFramesLeft[Math.floor(player.pos.x / 10) % walkFramesLeft.length];
+            player.play(1, true); // Reverse the animation when moving left
+        } else if (player.move.x > 0) {
+            player.frame = walkFramesRight[Math.floor(player.pos.x / 10) % walkFramesRight.length];
+            player.play(1);
+        } else {
+            player.play("player");
+        }
+    });
+
+    return player;
+}
+
 // define some constants
 const JUMP_FORCE = 1000
 const MOVE_SPEED = 480
