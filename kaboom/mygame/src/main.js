@@ -34,6 +34,7 @@ setGravity(2500)
 k.add([
 	text("Press arrow keys & WASD", { width: width() / 2 }),
 	pos(12, 12),
+	
 ])
 
 // define some constants
