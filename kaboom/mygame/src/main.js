@@ -1,7 +1,5 @@
 import kaboom from "kaboom"
 
-
-
 const k = kaboom()
 
 // loadSprite("player", "sprites/player1.png")
@@ -27,7 +25,6 @@ k.loadSprite("player", "sprites/spritesheet.png", {
 k.loadSprite("venus", "/sprites/venus.png");
 k.loadSprite("hedge", "/sprites/hedge.png");
 k.loadSprite("acid", "/sprites/acid.png");
-k.loadSound("hit", "/examples/sounds/hit.mp3");
 
 k.setBackground([40, 180, 99]);
 
