@@ -280,10 +280,10 @@ k.setBackground([40, 180, 99]);
 
 setGravity(2500)
 
-k.add([
-    text("Press arrow keys & WASD", { width: width() / 2 }),
-    pos(12, 12),
-])
+// k.add([
+//     text("Press arrow keys & WASD", { width: width() / 2 }),
+//     pos(12, 12),
+// ])
 
 const JUMP_FORCE = 1000
 const MOVE_SPEED = 480
@@ -405,6 +405,21 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
         if (player.pos.y >= FALL_DEATH) {
             go("death");
         }
+		// Calculate horizontal velocity
+        const dt = dt();
+        const playerVelocityX = (player.pos.x - prevPlayerPosX) / dt;
+
+        // Play "run" animation when moving
+        if (playerVelocityX !== 0) {
+            player.play("run");
+        } else {
+            // Play "idle" animation when not moving
+            player.play("idle");
+        }
+
+        // Update previous player position for the next frame
+        prevPlayerPosX = player.pos.x;
+    });
 
         // Play "run" animation when moving
         if (player.dx() !== 0) {
@@ -463,7 +478,6 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
     onKeyPress("f", () => {
         setFullscreen(!isFullscreen());
     });
-});
 
 k.scene("death", () => {
     k.add([
