@@ -7,7 +7,7 @@ Project: **Platformer Game**
 ---
 
 10/29/23:
-* I watched a few videos on how kaboom can be used. Scrolled through both kaboom.js' library and playtested in Kaboom.js playground. I still haven't decided on what I want to create since I don't wanna find out it can't be done half way through.
+* I only watched a few videos on how kaboom can be used. Scrolled through both kaboom.js' library and playtested in Kaboom.js playground. I still haven't decided on what I want to create since I don't wanna find out it can't be done half way through.
 
 [Kaboom.js](https://kaboomjs.com/)
 
