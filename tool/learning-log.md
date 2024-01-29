@@ -10,6 +10,7 @@ Project: **Platformer Game**
 * I watched a few videos on how kaboom can be used. Scrolled through both kaboom.js' library and playtested in Kaboom.js playground. I still haven't decided on what I want to create since I don't wanna find out it can't be done half way through.
 
 [Kaboom.js](https://kaboomjs.com/)
+[Kaboom.js Playground](https://kaboomjs.com/play?example=movement)
 [Learn to Make a Game with Kaboom.js in 39 Minutes - Step-by-Step Tutorial](https://www.youtube.com/watch?v=hgReGsh5xVU)
 
 11/05/23:
@@ -17,7 +18,9 @@ Project: **Platformer Game**
 
 
 12/10/23
-* I used a pre existing platformer game with variety of creations (blockgame which allows you to free build on 2d platform) With refrence i reshaped the map to look identical or simillar. I created a Levels tag and gave a symbol "=" attributes within the bracket to create a model within my codespace. For example the symbol "=" , I linked the "hedge" sprite to it and drew out my map.
+* I used a pre existing platformer game with variety of creations (blockgame which allows you to free build on 2d platform) With refrence i reshaped the map to look identical or simillar. I created a Levels tag and gave a symbol "=" attributes within the bracket to create a model within my codespace. For example the symbol "=" , I linked the "hedge" sprite to it and drew out my map. I found this Level tag within the Kaboom.js playground and it really makes it easy to detail your level to your liking.
+
+[Kaboom.js Playground- scenes](https://kaboomjs.com/play?example=scenes)
 
 
 01/28/24
