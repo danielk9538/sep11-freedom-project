@@ -22,6 +22,7 @@ k.loadSprite("player", "sprites/spritesheet.png", {
         "jump-down": 0,
     },
 });
+k.loadSprite("checkpoint", "/sprites/flowercheckpoint.png");
 k.loadSprite("venus", "/sprites/venus.png");
 k.loadSprite("hedge", "/sprites/hedge.png");
 k.loadSprite("acid", "/sprites/acid.png");
@@ -46,7 +47,7 @@ const LEVELS = [
 		"= = < = =                                                                                         =",
 		"= <   < =                                                                                         =",
 		"=       >=                                                                                        =",
-		"==  &    >=                                                                                       =",
+		"==  & $  >=                                                                                       =",
 		"=   ===>  >========================================================================================",
 		"=  =====>    =                                     =    <  <  <  <  <  <   =     =            =   =",
 		"=   =  ==>   =                                     =                       =     =                =",
@@ -113,7 +114,6 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger",
-			// fixed(),
 		],
 		"<": () => [
 			sprite("venus"),
@@ -125,7 +125,6 @@ const levelConf = {
 			"danger",
 			pos(0, -66),
 			rotate(180),
-			// fixed(),
 		],
 		"&": () => [
 			sprite("player"),
@@ -143,7 +142,17 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger2",
-			// fixed(),
+		],
+		"$": () => [
+			sprite("checkpoint"),
+			area(),
+			scale(1.4),
+			body({ isStatic: false }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"safe",
+
+
 		]
 	},
 }
@@ -166,6 +175,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 			go("death")
 		}
 	})
+
 	player.onBeforePhysicsResolve((collision) => {
 		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
 			collision.preventResolution()
@@ -180,6 +190,16 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		go("death")
 		play("hit")
 	})
+
+	// knockback, ill come back to it later
+		// detect when the player sprite collides with the block
+// 	player.onCollide("danger2", () => {
+// 	// move the player sprite back in the opposite direction
+// 	player.move(-player.dir.x * 100, -player.dir.y * 100);
+//   });
+
+  // ...
+
 	function jump() {
 		// these 2 functions are provided by body() component
 		if (player.isGrounded()) {
