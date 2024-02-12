@@ -1,4 +1,4 @@
-# Entry 2
+# Entry 3
 ##### 2/9/24
 
 For this part of my project, I've mostly been troubleshooting characteristics my character displays and realistic abilities with achievable goals.
