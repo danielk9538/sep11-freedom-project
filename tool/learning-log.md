@@ -33,6 +33,40 @@ Project: **Platformer Game**
 
 [Top Down Character Movement & Animations in Kaboom.js](https://www.youtube.com/watch?v=n-q0pKGhxyw)
 
+02/11/24
+*  I've mostly been troubleshooting, and testing fall damage, gravity, and knockback.
+
+
+
+Animation snippet
+```javascript
+k.loadSprite("player", "sprites/spritesheet.png", {
+    sliceX: 7,  // Adjusted for 7 sprites horizontally
+    sliceY: 1,
+    anims: {
+        run: {
+            from: 3,
+            to: 4,
+            loop: true,
+        },
+        "jump-up": 1,
+        "jump-down": 0,
+    },
+});
+```
+Knockback snippet
+```javascript
+// knockback, I'll come back to it later
+		// detect when the player sprite collides with the block
+	player.onCollide("danger2", () => {
+	// move the player sprite back in the opposite direction
+	player.move(-player.dir.x * 100, -player.dir.y * 100);
+  });
+```
+
+[Sprite Animation in JavaScript](https://www.youtube.com/watch?v=CY0HE277IBM)
+
+[Top Down Character Movement & Animations in Kaboom.js](https://www.youtube.com/watch?v=n-q0pKGhxyw)
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
