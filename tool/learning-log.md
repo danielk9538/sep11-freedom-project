@@ -67,10 +67,26 @@ Knockback snippet
 [Sprite Animation in JavaScript](https://www.youtube.com/watch?v=CY0HE277IBM)
 
 [Top Down Character Movement & Animations in Kaboom.js](https://www.youtube.com/watch?v=n-q0pKGhxyw)
-<!--
-* Links you used today (websites, videos, etc)
-* Things you tried, progress you made, etc
-* Challenges, a-ha moments, etc
-* Questions you still have
-* What you're going to try next
--->
+
+
+03/17/24
+I've been revamping the way knockback when colliding with a sprite with the tag "danger2" rather than eliminate the player. Previously, the player just gets warped to a random area nearby rather than tossed away however the player now gets slowly push away off the block it collides with. This wasn't my original intention however I do like how it turned out.
+
+```javascript
+	// Define the sign function
+function sign(x) {
+    return x > 0 ? 1 : x < 0 ? -1 : 0;
+}
+		// detect when the player sprite collides with the block
+player.onCollide("danger2", (obj) => {
+    // Calculate the knockback direction based on the player's position relative to the danger object
+    const knockbackDir = vec2(
+        sign(player.pos.x - obj.pos.x),
+        -1
+    );
+
+    // Apply knockback force to the player
+    player.move(knockbackDir.scale(900)); // Adjust the knockback force as needed
+});
+
+```
