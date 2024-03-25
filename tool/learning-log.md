@@ -69,7 +69,8 @@ Knockback snippet
 [Top Down Character Movement & Animations in Kaboom.js](https://www.youtube.com/watch?v=n-q0pKGhxyw)
 
 
-03/17/24
+03/11/24
+
 I've been revamping the way knockback when colliding with a sprite with the tag "danger2" rather than eliminate the player. Previously, the player just gets warped to a random area nearby rather than tossed away however the player now gets slowly push away off the block it collides with. This wasn't my original intention however I do like how it turned out.
 
 ```javascript
@@ -89,4 +90,26 @@ player.onCollide("danger2", (obj) => {
     player.move(knockbackDir.scale(900)); // Adjust the knockback force as needed
 });
 
+```
+03/25/24
+
+I've been creating coins/objective that the player can do while completing the parkour, coins around the map which will allow the player to win under the rule that they collected all the coins. There isn't that much to show as I just created a new config for coins and plotted them onto the layout. Soon I will set the conditional that will set required coins amount to complete the game. I also will correct my respawn system from making the player fall through the ground after death.
+
+```javascript
+"0": () => [
+			sprite("coin"),
+			area(),
+			scale(1),
+			body(),
+			anchor("center"),
+			"coin",
+		],
+"s": () => [
+			sprite("spawner"),
+			area(),
+			scale(1),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"spawn",
 ```
