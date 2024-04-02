@@ -113,3 +113,20 @@ I've been creating coins/objective that the player can do while completing the p
 			offscreen({ hide: true }),
 			"spawn",
 ```
+03/31/24
+I've been working on an objective that allows the player to win with a certain amount of coins after completing the parkour. Soon I will set the conditional that will set required coins amount to complete the game. I still haven't corrected my respawn system from making the player fall through the ground after death.
+
+```javascript
+
+player.onCollide("scrap", (s) => {
+		destroy(s)
+		coins += 1
+		coinsLabel.text = coins
+	})
+
+	const coinsLabel = add([
+		text(coins),
+		pos(24, 24),
+		fixed(),
+	])
+    ```
