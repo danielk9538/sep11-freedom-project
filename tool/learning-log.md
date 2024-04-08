@@ -129,4 +129,33 @@ player.onCollide("scrap", (s) => {
 		pos(24, 24),
 		fixed(),
 	])
+```
+
+04/7/24
+I've been working on an objective that allows the player to walk through a door to have their location/position switch to the next door. Later I'd like to prompt the user to enter through specific doors, though I am not sure this will be done. Snippet below. (Doesn't work yet)
+
+```javascript
+"@": () => [
+			sprite("door"),
+			area(),
+			scale(0.01),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"door",
+		],
+		"%": () => [
+			sprite("door"),
+			area(),
+			scale(0.01),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"2door2",
+		],
+
+			// if player onCollide with any obj with "door" tag,
+	player.onCollide("door", () => {
+		player.pos = level.get("2door2")[0].pos; // Move player to door2 position
+	});
     ```
