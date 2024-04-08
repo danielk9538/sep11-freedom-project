@@ -114,6 +114,7 @@ I've been creating coins/objective that the player can do while completing the p
 			"spawn",
 ```
 03/31/24
+
 I've been working on an objective that allows the player to win with a certain amount of coins after completing the parkour. Soon I will set the conditional that will set required coins amount to complete the game. I still haven't corrected my respawn system from making the player fall through the ground after death.
 
 ```javascript
@@ -132,6 +133,7 @@ player.onCollide("scrap", (s) => {
 ```
 
 04/7/24
+
 I've been working on an objective that allows the player to walk through a door to have their location/position switch to the next door. Later I'd like to prompt the user to enter through specific doors, though I am not sure this will be done. Snippet below. (Doesn't work yet)
 
 ```javascript
