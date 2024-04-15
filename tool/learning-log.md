@@ -161,3 +161,33 @@ I've been working on an objective that allows the player to walk through a door 
 		player.pos = level.get("2door2")[0].pos; // Move player to door2 position
 	});
     ```
+
+04/14/24
+
+I've completed the door transportation I planned to do. I created serveral tags with the same config and had it teleport the player to the tag I wanted the player to teleport tou. Snippet below shows the code for two portals, I repeated the same code with different tags. (May refactor in the future)
+
+```javascript
+		"6": () => [
+			sprite("door"),
+			area(),
+			scale(0.01),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal5",
+		],
+		"7": () => [
+			sprite("door"),
+			area(),
+			scale(0.01),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal6",
+		],
+
+			// if player onCollide with any obj with "door" tag,
+	player.onCollide("portal5", () => {
+		player.pos = level.get("portal6")[0].pos; // Move player to door2 position
+	});
+    ```
