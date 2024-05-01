@@ -3,12 +3,6 @@ import kaboom from "kaboom"
 
 const k = kaboom()
 
-// loadSprite("player", "sprites/player1.png")
-// loadSprite("fall", "sprites/player2.png")
-// loadSprite("lookR", "sprites/player5.png")
-// loadSprite("lookL", "sprites/player6.png")
-// loadSprite("walkL", "sprites/moveleftspritesheet.png")
-// loadSprite("walkR", "sprites/moverightspritesheet.png")
 k.loadSprite("player", "sprites/spritesheet.png", {
     sliceX: 7,  // Adjusted for 7 sprites horizontally
     sliceY: 1,
@@ -23,73 +17,86 @@ k.loadSprite("player", "sprites/spritesheet.png", {
     },
 });
 k.loadSprite("checkpoint", "/sprites/flowercheckpoint.png");
-k.loadSprite("venus", "/sprites/venus.png");
-k.loadSprite("hedge", "/sprites/hedge.png");
-k.loadSprite("acid", "/sprites/acid.png");
+k.loadSprite("spike", "/sprites/spike.png");
+k.loadSprite("metal", "/sprites/metal.png");
+k.loadSprite("acid", "/sprites/toxicwaste.png");
+k.loadSprite("door", "/sprites/iron-door.png");
+k.loadSprite("scrap", "/sprites/scrap.png");
 k.loadSound("hit", "/examples/sounds/hit.mp3");
 
-k.setBackground([40, 180, 99]);
-
-setGravity(2500)
+k.setBackground([128, 128, 128]);
 
 k.add([
-	text("Press arrow keys & WASD", { width: width() / 2 }),
+	text("Press arrow keys or WASD", {
+		width: width() / 2 }),
 	pos(12, 12),
 ])
+setGravity(2000)
+
 // define some constants
-const JUMP_FORCE = 1000
-const MOVE_SPEED = 480
-const FALL_DEATH = 90000
+const JUMP_FORCE = 900
+const MOVE_SPEED = 400
+const FALL_DEATH = 9000
 const LEVELS = [
 	[
 		"===================================================================================================",
-		"= =<= ===                                                                                         =",
-		"= = < = =                                                                                         =",
-		"= <   < =                                                                                         =",
-		"=       >=                                                                                        =",
-		"==  & $  >=                                                                                       =",
+		"= =<= ===     <<     <<         <<         <<     <       <<          <<         =  0             =",
+		"= = < = =6                                                                        ==              =",
+		"= <   < ==                                                                          ==            =",
+		"=0      >==           0               0              0             0                  ==          =",
+		"==       >==  =^=  =^=  =^=  =^=  =^=  =^=  =^=  =^=     ==^^==^    =   =^^^===                 9 =",
 		"=   ===>  >========================================================================================",
-		"=  =====>    =                                     =    <  <  <  <  <  <   =     =            =   =",
-		"=   =  ==>   =                                     =                       =     =                =",
-		"==  =   ==>  =                                     =                       =     == == == == ===  =",
-		"=   =    ==> =  >   >   >   >   >   >   >   >   >  =                       =     =            =   =",
-		"=  ===    ==    >   >   >   >   >   >   >   >   >                                =            =  ==",
-		"=   =     ========================================================================            =   =",
-		"==  =  =  =                                                                      =            ==  =",
-		"=   =     =                                                                      =            =   =",
-		"=  ===   ==                                                                      =            =  ==",
-		"=   =     =                                                                      =            =   =",
-		"==  =  =  =  =====================================================================            ==  =",
-		"=   =     =                                                                      =            =   =",
-		"=  ===    =                                                                      == == == == ==  ==",
-		"=   =    ==                                                                      == == == == ==   =",
-		"==  =  =  =                                                                      == == == == ===  =",
-		"=   =     =                                                                      == == == == ==   =",
-		"=  ==    ==  ====================================================================== == == == ==  ==",
-		"=   ==    =                                                                      == == == == ==   =",
-		"==  =  =  =                                                                      == == == == ===  =",
-		"=   =     =                                                                      == == == == ==   =",
-		"=  ===    =                                                                      == == == == ==  ==",
-		"=   =                                                                            == == == == ==   =",
-		"==  =============================================================================== == == == ===  =",
-		"=   =                =                                                           == == == == ==   =",
-		"=  ==                =                                                           == == == == ==  ==",
-		"=   =                =     =        =     =                                      ===== ========   =",
-		"==  = =^   ^      ^  =  =  =  =  =  =  =  =  =  =                                             ==  =",
-		"=     ==   =   ^  =     =^^=^^=^^=^^=^^=^^=^^=^^=                                             =   =",
+		"=  =====>    =                                     =    <  <  <  <  <  <  =      =            =   =",
+		"=   =  ==>   =                                     =                      =      =                =",
+		"==  =   ==>  =        0        0       0      0    =     0      0         =      ==  ====  =====  =",
+		"=   =1   ==> =  >   >   >   >   >   >   >   >   >  =                      =      =            =   =",
+		"=  ===    ==    >   >   >   >   >   >   >   >   >       =  =  =  =  =  =         =            =  ==",
+		"=   =     ==================================================================     =            =   =",
+		"==  =  =  =  =                            =    <     <     <     <         ==    ====  ==  =====  =",
+		"=   =    ^=  =    0      0         0      =                                =    ===           =   =",
+		"=  ===   ==  =                            =           0         0          =  =  ==   =====   =  ==",
+		"=   =  0  =4   ^   ^   ^   ^   ^   ^   ^    ^     ^     ^     ^     ^     5=     ==           =   =",
+		"==  =  =  ==================================================================  =  ==           ==  =",
+		"=   =^    =  =  = = = = = = = = = = = = = =  =   <  <  <  <  <  <  <  <    =     ==  ==   ==  =   =",
+		"=  ===    =  =  = =   = = =   =   = = =   =  =                             = =   ==           =  ==",
+		"=   =  0 ==  =    = =  0  = =   = =   = =    =                             =     ==           =   =",
+		"==  =  =  =  =  =   = = = = = = =   = 0 = =  =                             =   = ==           ==  =",
+		"=   =     =2    = = = = =   = = = = = = = =      ^  ^  ^  ^  ^  ^   0     3=     ==           =   =",
+		"=  ==^   ===================================================================    === == == == ==  ==",
+		"=   ==    =<  <  <  <  <  <  <  <  <  <  < =    =                                == == == == ==   =",
+		"==  =  =  =                                =                                     == == == == ===  =",
+		"=   =     =      0          0              =              =    =                 == == == == ==   =",
+		"=  ===    =                                =    =         =    =                 == == == == ==  ==",
+		"=   =         ^     ^     ^     ^     ^         =   >>  ^   >>>        ^         == == == == ==   =",
+		"==  =============================================================================== ==7== == ===  =",
+		"=   =                   =        0        0       =              0               == == == == ==   =",
+		"=  == 0                 =                         =                              ==^==^==^==^==  ==",
+		"=   =                   =        =        =       =     =        =     =         ==============   =",
+		"==  =   =^   ^      ^   =    =   =   =    =    =  =  =  =  =  =  =  =  =  =  =   =    8       ==  =",
+		"=       ==   =   ^  =        =>>>=>>>=>>>>=>>>>=     =^^=^^=^^=^^=^^=^^=^^=^^=          =   0 =   =",
 		"================================================================================================= =",
-		"=    <  <  <  =     <    <     =                                                         =        =",
-		"=             =                =                                                         = ========",
-		"=             =                =                                                         =        =",
-		"=             =                =   ==  =  =  ==  =  =                                    ======== =",
-		"=    =  =  =     ^     ^     ^     ^^^^^^^^^^^^^^^^^^^^^                                          =",
-		"================================================================================================= =",
-		"=        =   <=====<                                                                          =   =",
-		"=        =    <===<   =^=  ==                                                                 =  ==",
-		"=        = =   <<<   ==     <                                                                 =   =",
-		"=          ==       ===^                                                                      ==  =",
-		"=          ===       ^====                                                                        =",
+		"=     0=  <  <  <  =     <    <     =                           =   <<<<<<<<<<<<<<<<<    =        =",
+		"= ======           =                =              0            =                        = ========",
+		"=      =           =     0     0    =                           =                        =        =",
+		"==     =           =                =   ==  =  =  ==  =  =      =    ^ ^   ^   ^   ^     ======== =",
+		"=         =  =  =     ^     ^     ^     ^^^^^^^^^^^^^^^^^^^^^        > >   >   >   >              =",
+		"= =================================================================================================",
+		"=      =     =   <=====<           =             =                    =                   =       =",
+		"====== =     =    <===<   =^=  ==  =    0        =                    =      ==           =       =",
+		"=      =     = =   <<<   ==     <  =   ==        =    ==   0   ==  =  =   == <= 0       = =       =",
+		"= ======     = ==       ===^       =   ==  ==  = = == =   ===   =  =  =         ==  ^=    = &     =",
+		"=   0     ^    ===      0^====       ^^==^^==^^=   =^^=^^^^=^^^^=^^=     ^  ^^^^^=  =>         s  =",
 		"===================================================================================================",
+	],
+	[
+
+		" ===== ===== ",
+		" =   = =   = ",
+		" =     =  0  ",
+		" =  == =  == ",
+		" = 0 =&=  9= ",
+		" ===== ===== ",
+		"=============",
 	],
 ]
 // define what each symbol means in the level graph
@@ -98,27 +105,36 @@ const levelConf = {
 	tileHeight: 64,
 	tiles: {
 		"=": () => [
-			sprite("hedge"),
-			area(),
-			scale(2),
+			sprite("metal"),
+			area(1),
+			scale(1),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"platform",
 		],
-		"^": () => [
-			sprite("venus"),
+		"s": () => [
+			sprite("metal"),
 			area(),
-			scale(1.5),
+			scale(0.01),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"spawn",
+		],
+		"^": () => [
+			sprite("spike"),
+			area(),
+			scale(.5),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"danger",
 		],
 		"<": () => [
-			sprite("venus"),
+			sprite("spike"),
 			area(),
-			scale(1.5),
+			scale(.5),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -133,6 +149,14 @@ const levelConf = {
 			body(),
 			anchor("center"),
 			"player",
+		],
+		"0": () => [
+			sprite("scrap"),
+			area(),
+			scale(.03),
+			body(),
+			anchor("center"),
+			"scrap",
 		],
 		">": () => [
 			sprite("acid"),
@@ -151,9 +175,88 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"safe",
-
-
-		]
+		],
+		"1": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal",
+		],
+		"2": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal1",
+		],
+		"3": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal2",
+		],
+		"4": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal3",
+		],
+		"5": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal4",
+		],
+		"6": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal5",
+		],
+		"7": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal6",
+		],
+		"8": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"portal7",
+		],
+		"9": () => [
+			sprite("door"),
+			area(),
+			scale(0.3),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"finaldoor",
+		],
 	},
 }
 
@@ -165,14 +268,12 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	//gets the player rules from levels area
 	const player = level.get("player")[0]
 
-	// action() runs every frame
 	player.onUpdate(() => {
-
 		// center camera to player
 		camPos(player.pos)
 		// check fall death
 		if (player.pos.y >= FALL_DEATH) {
-			go("death")
+			player.pos = level.get("spawn")[0].pos; // Move player to spawn position
 		}
 	})
 
@@ -187,18 +288,72 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	})
 	// if player onCollide with any obj with "danger" tag, lose
 	player.onCollide("danger", () => {
-		go("death")
-		play("hit")
+		player.pos = level.get("spawn")[0].pos; // Move player to spawn position
+		// play("hit");
+	});
+	// if player onCollide with any obj with "door" tag, Move player to next portal position
+	player.onCollide("portal", () => {
+		player.pos = level.get("portal1")[0].pos;
+	});
+	player.onCollide("portal2", () => {
+		player.pos = level.get("portal3")[0].pos;
+	});
+	player.onCollide("portal4", () => {
+		player.pos = level.get("portal5")[0].pos;
+	});
+	player.onCollide("portal6", () => {
+		player.pos = level.get("portal7")[0].pos;
+	});
+
+	player.onCollide("scrap", (s) => {
+		destroy(s)
+		coins += 1
+		coinsLabel.text = coins
 	})
 
-	// knockback, ill come back to it later
-		// detect when the player sprite collides with the block
-// 	player.onCollide("danger2", () => {
-// 	// move the player sprite back in the opposite direction
-// 	player.move(-player.dir.x * 100, -player.dir.y * 100);
-//   });
+	const coinsLabel = add([
+		text(coins),
+		pos(24, 24),
+		fixed(),
+	])
 
-  // ...
+	player.onCollide("finaldoor", () => {
+		if (levelId + 1 < LEVELS.length) {
+			go("game", {
+				levelId: levelId + 1,
+				coins: coins,
+			})
+		} else {
+			go("win", { coins: coins })
+		}
+	})
+
+k.scene("win", ({ coins }) => {
+
+		add([
+			text(`You grabbed ${coins}/45 scrap!!!`, {
+			}),
+			pos(width() / 2, height() / 2),
+			anchor("center"),
+		])
+
+		onKeyPress(start)
+
+	})
+	// Define the sign function
+function sign(x) {
+    return x > 0 ? 1 : x < 0 ? -1 : 0;
+}
+		// detect when the player sprite collides with the block
+player.onCollide("danger2", (obj) => {
+    // Calculate the knockback direction based on the player's position relative to the danger object
+    const knockbackDir = vec2(
+        sign(player.pos.x - obj.pos.x),-1
+    );
+
+    // Apply knockback force to the player
+    player.move(knockbackDir.scale(900)); // Adjust the knockback force as needed
+});
 
 	function jump() {
 		// these 2 functions are provided by body() component
@@ -228,20 +383,13 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		setFullscreen(!isFullscreen())
 	})
 })
-k.scene("death", () => {
-	k.add([
-		text("You Died"),
-		pos(center()),
-	])
-	onKeyPress(() => go("game"))
-})
-scene("win", () => {
-	add([
-		text("You Win"),
-	])
-	onKeyPress(() => go("game"))
-})
 go("game")
 
-
+function start() {
+	// Start with the "game" scene, with initial parameters
+	go("game", {
+		levelId: 0,
+		coins: 0,
+	})
+}
 // npm run dev
