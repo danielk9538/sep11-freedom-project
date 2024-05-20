@@ -22,7 +22,8 @@ k.loadSprite("metal", "/sprites/metal.png");
 k.loadSprite("acid", "/sprites/toxicwaste.png");
 k.loadSprite("door", "/sprites/iron-door.png");
 k.loadSprite("scrap", "/sprites/scrap.png");
-k.loadSound("hit", "/examples/sounds/hit.mp3");
+k.loadSprite("dog", "/sprites/dog.png");
+// k.loadSound("hit", "/examples/sounds/hit.mp3");
 
 k.setBackground([128, 128, 128]);
 
@@ -33,10 +34,27 @@ k.add([
 ])
 setGravity(2000)
 
+function patrol(speed = 60, dir = 1) {
+	return {
+		id: "patrol",
+		require: [ "pos", "area" ],
+		add() {
+			this.on("collide", (obj, col) => {
+				if (col.isLeft() || col.isRight()) {
+					dir = -dir
+				}
+			})
+		},
+		update() {
+			this.move(speed * dir, 0)
+		},
+	}
+}
+
 // define some constants
 const JUMP_FORCE = 900
 const MOVE_SPEED = 400
-const FALL_DEATH = 9000
+const FALL_DEATH = 5000
 const LEVELS = [
 	[
 		"===================================================================================================",
@@ -44,7 +62,7 @@ const LEVELS = [
 		"= = < = =6                                                                        ==              =",
 		"= <   < ==                                                                          ==            =",
 		"=0      >==           0               0              0             0                  ==          =",
-		"==       >==  =^=  =^=  =^=  =^=  =^=  =^=  =^=  =^=     ==^^==^    =   =^^^===                 9 =",
+		"==       >==  =^=  =^=  =^=  =^=  =^=  =^=  =^=  =^=     ==^^==^    =   =^^^===              &  9 =",
 		"=   ===>  >========================================================================================",
 		"=  =====>    =                                     =    <  <  <  <  <  <  =      =            =   =",
 		"=   =  ==>   =                                     =                      =      =                =",
@@ -65,9 +83,9 @@ const LEVELS = [
 		"=  ==^   ===================================================================    === == == == ==  ==",
 		"=   ==    =<  <  <  <  <  <  <  <  <  <  < =    =                                == == == == ==   =",
 		"==  =  =  =                                =                                     == == == == ===  =",
-		"=   =     =      0          0              =              =    =                 == == == == ==   =",
-		"=  ===    =                                =    =         =    =                 == == == == ==  ==",
-		"=   =         ^     ^     ^     ^     ^         =   >>  ^   >>>        ^         == == == == ==   =",
+		"=   =     =      0          0              =                   =                 == == == == ==   =",
+		"=  ===    =                                =   =               =                 == == == == ==  ==",
+		"=   =         ^     ^     ^     ^     ^        =       g       =g     =^         == == == == ==   =",
 		"==  =============================================================================== ==7== == ===  =",
 		"=   =                   =        0        0       =              0               == == == == ==   =",
 		"=  == 0                 =                         =                              ==^==^==^==^==  ==",
@@ -84,12 +102,11 @@ const LEVELS = [
 		"=      =     =   <=====<           =             =                    =                   =       =",
 		"====== =     =    <===<   =^=  ==  =    0        =                    =      ==           =       =",
 		"=      =     = =   <<<   ==     <  =   ==        =    ==   0   ==  =  =   == <= 0       = =       =",
-		"= ======     = ==       ===^       =   ==  ==  = = == =   ===   =  =  =         ==  ^=    = &     =",
+		"= ======     = ==       ===^       =   ==  ==  = = == =   ===   =  =  =         ==  ^=    =       =",
 		"=   0     ^    ===      0^====       ^^==^^==^^=   =^^=^^^^=^^^^=^^=     ^  ^^^^^=  =>         s  =",
 		"===================================================================================================",
 	],
 	[
-
 		" ===== ===== ",
 		" =   = =   = ",
 		" =     =  0  ",
@@ -106,7 +123,7 @@ const levelConf = {
 	tiles: {
 		"=": () => [
 			sprite("metal"),
-			area(1),
+			area(),
 			scale(1),
 			body({ isStatic: true }),
 			anchor("bot"),
@@ -121,6 +138,16 @@ const levelConf = {
 			anchor("bot"),
 			offscreen({ hide: true }),
 			"spawn",
+		],
+		"g": () => [
+			sprite("dog"),
+			area(),
+			scale(0.08),
+			anchor("bot"),
+			body(),
+			patrol(),
+			offscreen({ hide: true }),
+			"danger",
 		],
 		"^": () => [
 			sprite("spike"),
@@ -154,7 +181,6 @@ const levelConf = {
 			sprite("scrap"),
 			area(),
 			scale(.03),
-			body(),
 			anchor("center"),
 			"scrap",
 		],
@@ -233,7 +259,7 @@ const levelConf = {
 		"7": () => [
 			sprite("door"),
 			area(),
-			scale(0.3),
+			scale(0.01),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -242,7 +268,7 @@ const levelConf = {
 		"8": () => [
 			sprite("door"),
 			area(),
-			scale(0.3),
+			scale(0.01),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -274,6 +300,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		// check fall death
 		if (player.pos.y >= FALL_DEATH) {
 			player.pos = level.get("spawn")[0].pos; // Move player to spawn position
+			go("game")
 		}
 	})
 
@@ -289,6 +316,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	// if player onCollide with any obj with "danger" tag, lose
 	player.onCollide("danger", () => {
 		player.pos = level.get("spawn")[0].pos; // Move player to spawn position
+		go("game")
 		// play("hit");
 	});
 	// if player onCollide with any obj with "door" tag, Move player to next portal position
@@ -316,6 +344,19 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		pos(24, 24),
 		fixed(),
 	])
+	let stopwatch = 0
+
+	const timer = add([
+		anchor("topright"),
+		pos(width() - 48, 24),
+		text(stopwatch),
+		fixed(),
+	])
+
+	player.onUpdate(() => {
+		stopwatch += dt()
+		timer.text = stopwatch.toFixed(2)
+	})
 
 	player.onCollide("finaldoor", () => {
 		if (levelId + 1 < LEVELS.length) {
@@ -331,7 +372,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 k.scene("win", ({ coins }) => {
 
 		add([
-			text(`You grabbed ${coins}/45 scrap!!!`, {
+			text(`You grabbed ${coins}/45 scrap!!! within ${stopwatch}`,{
 			}),
 			pos(width() / 2, height() / 2),
 			anchor("center"),

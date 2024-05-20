@@ -19,7 +19,7 @@
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="script.js"></script>
+        <!-- <script src="script.js"></script> -->
 		<!-- <script type="module" src="main.js"></script> -->
         <script type="module">
             import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
@@ -87,7 +87,7 @@ const LEVELS = [
 		"= = < = =6                                                                        ==              =",
 		"= <   < ==                                                                          ==            =",
 		"=0      >==           0               0              0             0                  ==          =",
-		"==       >==  =^=  =^=  =^=  =^=  =^=  =^=  =^=  =^=     ==^^==^    =   =^^^===                 9 =",
+		"==       >==  =^=  =^=  =^=  =^=  =^=  =^=  =^=  =^=     ==^^==^    =   =^^^===              &  9 =",
 		"=   ===>  >========================================================================================",
 		"=  =====>    =                                     =    <  <  <  <  <  <  =      =            =   =",
 		"=   =  ==>   =                                     =                      =      =                =",
@@ -127,12 +127,11 @@ const LEVELS = [
 		"=      =     =   <=====<           =             =                    =                   =       =",
 		"====== =     =    <===<   =^=  ==  =    0        =                    =      ==           =       =",
 		"=      =     = =   <<<   ==     <  =   ==        =    ==   0   ==  =  =   == <= 0       = =       =",
-		"= ======     = ==       ===^       =   ==  ==  = = == =   ===   =  =  =         ==  ^=    = &     =",
+		"= ======     = ==       ===^       =   ==  ==  = = == =   ===   =  =  =         ==  ^=    =       =",
 		"=   0     ^    ===      0^====       ^^==^^==^^=   =^^=^^^^=^^^^=^^=     ^  ^^^^^=  =>         s  =",
 		"===================================================================================================",
 	],
 	[
-
 		" ===== ===== ",
 		" =   = =   = ",
 		" =     =  0  ",
@@ -370,6 +369,19 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		pos(24, 24),
 		fixed(),
 	])
+	let stopwatch = 0
+
+	const timer = add([
+		anchor("topright"),
+		pos(width() - 48, 24),
+		text(stopwatch),
+		fixed(),
+	])
+
+	player.onUpdate(() => {
+		stopwatch += dt()
+		timer.text = stopwatch.toFixed(2)
+	})
 
 	player.onCollide("finaldoor", () => {
 		if (levelId + 1 < LEVELS.length) {
@@ -385,7 +397,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 k.scene("win", ({ coins }) => {
 
 		add([
-			text(`You grabbed ${coins}/45 scrap!!!`, {
+			text(`You grabbed ${coins}/45 scrap!!! within ${stopwatch}`,{
 			}),
 			pos(width() / 2, height() / 2),
 			anchor("center"),
