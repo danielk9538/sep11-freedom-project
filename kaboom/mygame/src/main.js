@@ -33,6 +33,7 @@ k.add([
 	pos(12, 12),
 ])
 setGravity(2000)
+getGravity(2000)
 
 function patrol(speed = 60, dir = 1) {
 	return {
@@ -400,6 +401,7 @@ player.onCollide("danger2", (obj) => {
 		// these 2 functions are provided by body() component
 		if (player.isGrounded()) {
 			player.jump(JUMP_FORCE)
+			player.play("jump")
 		}
 	}
 	// jump with space
@@ -414,11 +416,18 @@ player.onCollide("danger2", (obj) => {
 	function moveRight() {
 		player.move(MOVE_SPEED, 0);
 	}
-	onKeyDown("right", moveRight);
-	onKeyDown("d", moveRight);
-	onGamepadButtonPress("south", jump)
-	onGamepadStick("left", (v) => {
-		player.move(v.x * MOVE_SPEED, 0)
+	// onKeyDown("right", moveRight);
+	// onKeyDown("d", moveRight);
+	// onGamepadButtonPress("south", jump)
+	// onGamepadStick("left", (v) => {
+	// 	player.move(v.x * MOVE_SPEED, 0)
+	// })
+	onKeyDown("right", () => {
+		player.move(SPEED, 0)
+		player.flipX = false
+		if (player.isGrounded() && player.curAnim() !== "run") {
+			player.play("run")
+		}
 	})
 	onKeyPress("f", () => {
 		setFullscreen(!isFullscreen())

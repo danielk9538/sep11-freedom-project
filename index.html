@@ -29,7 +29,7 @@
 const k = kaboom()
 
 k.loadSprite("player", "sprites/spritesheet.png", {
-    sliceX: 7,  // Adjusted for 7 sprites horizontally
+    sliceX: 7,  // Adjusted for 8 sprites horizontally
     sliceY: 1,
     anims: {
         run: {
@@ -37,10 +37,13 @@ k.loadSprite("player", "sprites/spritesheet.png", {
             to: 4,
             loop: true,
         },
-        "jump-up": 1,
+        "jump-up": 2,
         "jump-down": 0,
     },
 });
+const player = add([
+    sprite("player"),
+])
 k.loadSprite("checkpoint", "/sprites/flowercheckpoint.png");
 k.loadSprite("spike", "/sprites/spike.png");
 k.loadSprite("metal", "/sprites/metal.png");
@@ -87,7 +90,7 @@ const LEVELS = [
 		"= = < = =6                                                                        ==              =",
 		"= <   < ==                                                                          ==            =",
 		"=0      >==           0               0              0             0                  ==          =",
-		"==       >==  =^=  =^=  =^=  =^=  =^=  =^=  =^=  =^=     ==^^==^    =   =^^^===              &  9 =",
+		"==       >==  =^=  =^=  =^=  =^=  =^=  =^=  =^=  =^=     ==^^==^    =   =^^^===                 9 =",
 		"=   ===>  >========================================================================================",
 		"=  =====>    =                                     =    <  <  <  <  <  <  =      =            =   =",
 		"=   =  ==>   =                                     =                      =      =                =",
@@ -127,7 +130,7 @@ const LEVELS = [
 		"=      =     =   <=====<           =             =                    =                   =       =",
 		"====== =     =    <===<   =^=  ==  =    0        =                    =      ==           =       =",
 		"=      =     = =   <<<   ==     <  =   ==        =    ==   0   ==  =  =   == <= 0       = =       =",
-		"= ======     = ==       ===^       =   ==  ==  = = == =   ===   =  =  =         ==  ^=    =       =",
+		"= ======     = ==       ===^       =   ==  ==  = = == =   ===   =  =  =         ==  ^=    = &     =",
 		"=   0     ^    ===      0^====       ^^==^^==^^=   =^^=^^^^=^^^^=^^=     ^  ^^^^^=  =>         s  =",
 		"===================================================================================================",
 	],
@@ -239,7 +242,7 @@ const levelConf = {
 		"2": () => [
 			sprite("door"),
 			area(),
-			scale(0.3),
+			scale(0.01),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -257,7 +260,7 @@ const levelConf = {
 		"4": () => [
 			sprite("door"),
 			area(),
-			scale(0.3),
+			scale(0.01),
 			body({ isStatic: true }),
 			anchor("bot"),
 			offscreen({ hide: true }),
@@ -327,6 +330,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 			player.pos = level.get("spawn")[0].pos; // Move player to spawn position
 			go("game")
 		}
+		player.play("run")
 	})
 
 	player.onBeforePhysicsResolve((collision) => {
