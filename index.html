@@ -41,9 +41,9 @@ k.loadSprite("player", "sprites/spritesheet.png", {
         "jump-down": 0,
     },
 });
-const player = add([
-    sprite("player"),
-])
+// const player = add([
+//     sprite("player"),
+// ])
 k.loadSprite("checkpoint", "sprites/flowercheckpoint.png");
 k.loadSprite("spike", "sprites/spike.png");
 k.loadSprite("metal", "sprites/metal.png");
@@ -330,7 +330,7 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 			player.pos = level.get("spawn")[0].pos; // Move player to spawn position
 			go("game")
 		}
-		player.play("run")
+		// player.play("run")
 	})
 
 	player.onBeforePhysicsResolve((collision) => {
