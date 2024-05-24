@@ -22,28 +22,29 @@
         <!-- <script src="script.js"></script> -->
 		<!-- <script type="module" src="main.js"></script> -->
         <script type="module">
-            import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
+import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
 
-			// import kaboom from "kaboom"
+// import kaboom from "kaboom"
 
 const k = kaboom()
 
 k.loadSprite("player", "sprites/spritesheet.png", {
-    sliceX: 7,  // Adjusted for 8 sprites horizontally
+    sliceX: 7.5,  // Adjusted for 8 sprites horizontally
     sliceY: 1,
     anims: {
+		"idle": {
+			from: 0,
+			to: 0,
+			loop: true,
+		},
         run: {
-            from: 3,
-            to: 4,
+            from: 2,
+            to: 3,
             loop: true,
         },
-        "jump-up": 2,
-        "jump-down": 0,
-    },
+		"jump": 1,
+	},
 });
-// const player = add([
-//     sprite("player"),
-// ])
 k.loadSprite("checkpoint", "sprites/flowercheckpoint.png");
 k.loadSprite("spike", "sprites/spike.png");
 k.loadSprite("metal", "sprites/metal.png");
@@ -61,6 +62,9 @@ k.add([
 	pos(12, 12),
 ])
 setGravity(2000)
+
+getGravity(2000)
+
 
 function patrol(speed = 60, dir = 1) {
 	return {
@@ -330,7 +334,6 @@ k.scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 			player.pos = level.get("spawn")[0].pos; // Move player to spawn position
 			go("game")
 		}
-		// player.play("run")
 	})
 
 	player.onBeforePhysicsResolve((collision) => {
@@ -429,6 +432,7 @@ player.onCollide("danger2", (obj) => {
 		// these 2 functions are provided by body() component
 		if (player.isGrounded()) {
 			player.jump(JUMP_FORCE)
+			player.play("jump")
 		}
 	}
 	// jump with space
@@ -438,20 +442,55 @@ player.onCollide("danger2", (obj) => {
 	function moveLeft() {
 		player.move(-MOVE_SPEED, 0);
 	}
-	onKeyDown("left", moveLeft);
-	onKeyDown("a", moveLeft);
-	function moveRight() {
-		player.move(MOVE_SPEED, 0);
+// Switch to "idle" or "run" animation when player hits ground
+player.onGround(() => {
+	if (!isKeyDown("a") && !isKeyDown("d")) {
+		player.play("idle")
+	} else {
+		player.play("run")
 	}
-	onKeyDown("right", moveRight);
-	onKeyDown("d", moveRight);
-	onGamepadButtonPress("south", jump)
-	onGamepadStick("left", (v) => {
-		player.move(v.x * MOVE_SPEED, 0)
+})
+
+player.onAnimEnd((anim) => {
+	if (anim === "idle") {
+		// You can also register an event that runs when certain anim ends
+	}
+})
+
+onKeyDown("a", () => {
+	player.move(-MOVE_SPEED, 0)
+	player.flipX = false
+	// .play() will reset to the first frame of the anim, so we want to make sure it only runs when the current animation is not "run"
+	if (player.isGrounded() && player.curAnim() !== "run") {
+		player.play("run")
+	}
+})
+
+onKeyDown("d", () => {
+	player.move(MOVE_SPEED, 0)
+	player.flipX = true
+	if (player.isGrounded() && player.curAnim() !== "run") {
+		player.play("run")
+	}
+})
+
+;["d", "a"].forEach((key) => {
+	onKeyRelease(key, () => {
+	// Only reset to "idle" if player is not holding any of these keys
+		if (player.isGrounded() && !isKeyDown("a") && !isKeyDown("d")) {
+			player.play("idle")
+		}
 	})
-	onKeyPress("f", () => {
-		setFullscreen(!isFullscreen())
-	})
+})
+// onKeyDown("a", () => {
+// 	player.move(-MOVE_SPEED, 0);
+// })
+// onKeyDown("d", () => {
+// 	player.move(MOVE_SPEED, 0);
+// })
+})
+onKeyPress("f", () => {
+	setFullscreen(!isFullscreen())
 })
 go("game")
 
